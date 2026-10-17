@@ -85,8 +85,8 @@ documents:
     shariah_concept: Ujrah
     scope: multi_card
     language: en
-    valid_as_at: "2021-06"
-    url: https://www.bsn.com.my/cms/upload/pdf/islamic/cards/pds/cards-pds-islamic-eng.pdf
+    valid_as_at: "2025-11"
+    url: https://www.bsn.com.my/cms/upload/pdf/islamic/cards/pds.pdf
 
   - doc_id: hlb_credit_cards_bm
     bank: Hong Leong Bank
