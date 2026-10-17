@@ -1,0 +1,16 @@
+# All tunable settings live here, so experiments don't require code changes.
+paths:
+  sources: data/sources.yaml
+  raw_dir: data/raw
+  processed_dir: data/processed
+  index_dir: data/index
+
+chunking:
+  fixed:
+    chunk_size_words: 150
+    overlap_words: 30
+  structured:
+    max_words: 300
+
+llm:
+  model: gemini-3.8-flash
