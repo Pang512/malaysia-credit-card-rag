@@ -1,0 +1,89 @@
+# Official Product Disclosure Sheets (PDS) used in this project.
+# PDFs are NOT stored in the repo. Run: python src/download.py
+# Personal, non-commercial demo. Documents remain the property of the banks.
+
+documents:
+  - doc_id: maybank_cashback_platinum
+    bank: Maybank
+    product: Maybank Cash Back Mastercard Platinum
+    card_type: conventional
+    scope: single_card
+    language: en
+    url: https://www.maybank2u.com.my/iwov-resources/pdf/personal/cards/credit_cards/cashback-mcard-platinum-pds.pdf
+
+  - doc_id: cimb_credit_cards
+    bank: CIMB
+    product: CIMB Credit Cards (multiple)
+    card_type: conventional
+    scope: multi_card
+    language: en
+    url: https://www.cimbclicks.com.my/form/Credit_Card_PDS.pdf
+
+  - doc_id: ocbc_credit_cards
+    bank: OCBC
+    product: OCBC Credit Cards (multiple)
+    card_type: conventional
+    scope: multi_card
+    language: en
+    url: https://www.ocbc.com.my/iwov-resources/my/ocbc/personal/pdf/cards/card-services/pds-credit-card.pdf
+
+  - doc_id: hlb_credit_cards_en
+    bank: Hong Leong Bank
+    product: Hong Leong Credit Cards (multiple)
+    card_type: conventional
+    scope: multi_card
+    language: en
+    url: https://www.hlb.com.my/content/dam/hlb/my/docs/pdf/Personal/CreditCard/pds/hlb-credit-card-pds-en.pdf
+
+  - doc_id: pbb_credit_cards
+    bank: Public Bank
+    product: Public Bank Credit Cards (multiple)
+    card_type: conventional
+    scope: multi_card
+    language: en
+    url: ""   # manual download, see source_page
+    source_page: https://pbebank.com/en/cards/our-cards/pb-quantum-credit-cards-2/
+
+  - doc_id: maybank_islamic_nadi
+    bank: Maybank Islamic
+    product: Maybank Islamic Nadi Mastercard Credit Card-i
+    card_type: islamic
+    shariah_concept: Tawarruq
+    scope: single_card
+    language: en
+    url: https://www.maybank2u.com.my/iwov-resources/pdf/personal/cards/credit_cards/nadi-mastercard-pds.pdf
+
+  - doc_id: bankislam_credit_card_i
+    bank: Bank Islam
+    product: Bank Islam Credit Card-i
+    card_type: islamic
+    shariah_concept: Tawarruq
+    scope: multi_card
+    language: en
+    url: https://www.bankislam.com/wp-content/uploads/Credit-Card-i-Product-Disclosure-Sheet-effective-31-December-2025-2.pdf
+
+  - doc_id: muamalat_credit_card_i
+    bank: Bank Muamalat
+    product: Bank Muamalat Credit Card-i
+    card_type: islamic
+    shariah_concept: Tawarruq
+    scope: multi_card
+    language: en
+    url: https://www.muamalat.com.my/downloads/documents/PDS_Credit_Card_ENG.pdf
+
+  - doc_id: bsn_al_aiman
+    bank: BSN
+    product: BSN Al-Aiman Credit Card-i
+    card_type: islamic
+    shariah_concept: Ujrah
+    scope: multi_card
+    language: en
+    url: https://www.bsn.com.my/cms/upload/pdf/islamic/cards/pds/cards-pds-islamic-eng.pdf
+
+  - doc_id: hlb_credit_cards_bm
+    bank: Hong Leong Bank
+    product: Hong Leong Credit Cards (multiple)
+    card_type: conventional
+    scope: multi_card
+    language: ms
+    url: https://www.hlb.com.my/content/dam/hlb/my/docs/pdf/Personal/CreditCard/pds/hlb-credit-card-pds-bm.pdf
