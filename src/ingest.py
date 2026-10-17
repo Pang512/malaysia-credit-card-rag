@@ -2,7 +2,7 @@
 import json
 import re
 
-import fitz  # PyMuPDF
+import pymupdf  
 import yaml
 
 from chunking import chunk_fixed, chunk_structured
@@ -16,6 +16,16 @@ def clean_text(text):
     lines = [ln.strip() for ln in text.split("\n")]
     return "\n".join(ln for ln in lines if ln)  # drop empty lines
 
+BM_WORDS = {"yang", "dan", "anda", "untuk", "kepada", "dengan", "ini", "adalah", "tidak", "atau"}
+EN_WORDS = {"the", "and", "you", "to", "for", "of", "is", "with", "your", "or"}
+
+
+def detect_language(text):
+    """Simple heuristic: count common Malay vs English words on the page."""
+    words = re.findall(r"[a-z]+", text.lower())
+    bm = sum(w in BM_WORDS for w in words)
+    en = sum(w in EN_WORDS for w in words)
+    return "ms" if bm > en else "en"
 
 def load_pages(cfg):
     sources_path = ROOT / cfg["paths"]["sources"]
@@ -28,7 +38,7 @@ def load_pages(cfg):
         if not pdf_path.exists():
             print(f"[skip] {doc['doc_id']}: PDF not found")
             continue
-        with fitz.open(pdf_path) as pdf:
+        with pymupdf.open(pdf_path) as pdf:
             kept = 0
             for page_num, page in enumerate(pdf, start=1):
                 text = clean_text(page.get_text("text"))
@@ -40,7 +50,8 @@ def load_pages(cfg):
                     "product": doc["product"],
                     "card_type": doc["card_type"],
                     "shariah_concept": doc.get("shariah_concept"),
-                    "language": doc["language"],
+                    "language": detect_language(text),
+                    "valid_as_at": doc.get("valid_as_at"),
                     "page": page_num,
                     "text": text,
                 })

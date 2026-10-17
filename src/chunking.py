@@ -1,7 +1,7 @@
 """Two chunking strategies, so we can compare them in evaluation."""
 
 META_KEYS = ["doc_id", "bank", "product", "card_type",
-             "shariah_concept", "language", "page"]
+             "shariah_concept", "language", "valid_as_at", "page"]
 
 
 def make_chunk(page, text, strategy, n):

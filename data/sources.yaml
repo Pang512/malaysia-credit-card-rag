@@ -9,6 +9,7 @@ documents:
     card_type: conventional
     scope: single_card
     language: en
+    valid_as_at: "unknown"
     url: https://www.maybank2u.com.my/iwov-resources/pdf/personal/cards/credit_cards/cashback-mcard-platinum-pds.pdf
 
   - doc_id: cimb_credit_cards
@@ -17,6 +18,7 @@ documents:
     card_type: conventional
     scope: multi_card
     language: en
+    valid_as_at: "2024-08-24"
     url: https://www.cimbclicks.com.my/form/Credit_Card_PDS.pdf
 
   - doc_id: ocbc_credit_cards
@@ -25,6 +27,7 @@ documents:
     card_type: conventional
     scope: multi_card
     language: en
+    valid_as_at: "2026-07"
     url: https://www.ocbc.com.my/iwov-resources/my/ocbc/personal/pdf/cards/card-services/pds-credit-card.pdf
 
   - doc_id: hlb_credit_cards_en
@@ -41,6 +44,7 @@ documents:
     card_type: conventional
     scope: multi_card
     language: en
+    valid_as_at: "2026-10-01"
     url: ""   # manual download, see source_page
     source_page: https://pbebank.com/en/cards/our-cards/pb-quantum-credit-cards-2/
 
@@ -51,6 +55,7 @@ documents:
     shariah_concept: Tawarruq
     scope: single_card
     language: en
+    valid_as_at: "unknown"
     url: https://www.maybank2u.com.my/iwov-resources/pdf/personal/cards/credit_cards/nadi-mastercard-pds.pdf
 
   - doc_id: bankislam_credit_card_i
@@ -60,6 +65,7 @@ documents:
     shariah_concept: Tawarruq
     scope: multi_card
     language: en
+    valid_as_at: "2025-12-31"
     url: https://www.bankislam.com/wp-content/uploads/Credit-Card-i-Product-Disclosure-Sheet-effective-31-December-2025-2.pdf
 
   - doc_id: muamalat_credit_card_i
@@ -69,6 +75,7 @@ documents:
     shariah_concept: Tawarruq
     scope: multi_card
     language: en
+    valid_as_at: "2026-01-01"
     url: https://www.muamalat.com.my/downloads/documents/PDS_Credit_Card_ENG.pdf
 
   - doc_id: bsn_al_aiman
@@ -78,6 +85,7 @@ documents:
     shariah_concept: Ujrah
     scope: multi_card
     language: en
+    valid_as_at: "2021-06"
     url: https://www.bsn.com.my/cms/upload/pdf/islamic/cards/pds/cards-pds-islamic-eng.pdf
 
   - doc_id: hlb_credit_cards_bm
