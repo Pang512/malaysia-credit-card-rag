@@ -14,3 +14,12 @@ chunking:
 
 llm:
   model: gemini-3.8-flash
+
+embedding:
+  model: BAAI/bge-small-en-v1.5
+  query_instruction: "Represent this sentence for searching relevant passages: "
+  batch_size: 32
+
+retrieval:
+  top_k: 5
+  languages: [en]
