@@ -82,7 +82,7 @@ documents:
     bank: BSN
     product: BSN Al-Aiman Credit Card-i
     card_type: islamic
-    shariah_concept: Ujrah
+    shariah_concept: Tawarruq
     scope: multi_card
     language: en
     valid_as_at: "2025-11"
