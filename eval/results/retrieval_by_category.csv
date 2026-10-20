@@ -1,0 +1,10 @@
+category,hit@5_fixed,hit@5_structured,MRR_fixed,MRR_structured
+advisory,1.0,0.0,0.25,0.0
+aggregation,1.0,1.0,1.0,1.0
+comparison,1.0,1.0,0.65,0.83
+eligibility,1.0,1.0,0.73,0.85
+extraction_trap,1.0,1.0,0.2,1.0
+fact,1.0,1.0,0.87,0.91
+islamic,0.75,1.0,0.62,1.0
+multi_source,1.0,0.0,0.25,0.0
+table,1.0,1.0,1.0,0.94
