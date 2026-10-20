@@ -77,6 +77,30 @@ Use it for the README, interview stories and LinkedIn posts.
 
 ---
 
+## Background notes: chatbot approaches beyond RAG
+
+RAG is one building block, not the only type of assistant. Real systems combine several.
+
+| Approach | What it does | Good at | Weak at |
+|---|---|---|---|
+| Plain RAG (v1) | Find relevant chunks, LLM answers from them | Single facts, explanations, citations | Lists, filters, wide comparisons |
+| Advanced RAG | Hybrid search, reranking, rewriting one question into several searches | Harder lookups, two-bank comparisons | Still limited to a few chunks at a time |
+| Long-context | Put every document into the prompt, no retrieval | Small document sets, "list everything" | Cost, speed and quality drop as documents grow |
+| Structured data + tools (text-to-SQL) | Facts in a table; the LLM queries it | Filtering, ranking, aggregation, exact numbers | Explanations, anything not in the table |
+| Agentic | The LLM plans steps and chooses tools (search, catalog, calculator) | Multi-step questions | More complex, slower, harder to test |
+| Pre-computed summaries | Summarise each card once, offline | Instant overviews | Must be regenerated when documents change |
+| Recommender | Score cards against a user profile with rules | Personal shortlists | Needs the right data and fair criteria |
+| GraphRAG / knowledge graph | Store entities and relationships (bank → card → fee) | Complex links across many documents | Heavy to build; overkill for 8 banks |
+| Fine-tuning | Retrain the model itself | Style, format, specialised vocabulary | Expensive, can't cite sources, goes stale |
+
+**Chosen design for this project:** hybrid and agentic. RAG for explanations, a card catalog with tools for filter/rank/compare, one summary per card for overviews, and a scoring step for shortlists. No fine-tuning.
+
+**Why RAG if 33 pages fit in the context window?** RAG scales to thousands of documents, costs less per question, is faster, and cites precisely. For a corpus this small, long-context is a fair baseline to test against.
+
+**Card benefits:** PDS documents barely cover benefits (only BSN's travel Takaful cover). Benefits live in each card's T&C and product pages, and change often, so every benefit answer must show its source date.
+
+---
+
 ## Coming next (before/after stories to fill in)
 - [ ] Baseline evaluation: hit@k, MRR, answer correctness per category
 - [ ] Hybrid search (BM25 + dense) and reranker
