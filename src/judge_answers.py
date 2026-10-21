@@ -33,6 +33,8 @@ Grade two things.
    - "partial": some key facts match, but something important is missing or wrong.
    - "incorrect": the key facts are wrong or missing.
    If the reference starts with "RUBRIC", grade against its Must / Must not / Should points instead.
+   If the reference says the information is not available, the answer is "correct" only if it
+   says the documents do not provide it and gives no figures for that card or topic.
 2. faithful: true if every factual claim in the assistant answer is supported by the
    context passages, false if any claim is not supported by them.
 
@@ -158,7 +160,8 @@ def main():
         "accuracy (correct or partial)": answerable["is_correct_or_partial"].mean(),
         "faithfulness": df["faithful_num"].mean(),
         "false refusal rate (answerable)": answerable["refused"].mean(),
-        "correct refusal rate (unanswerable)": unanswerable["refused"].mean(),
+        "unanswerable handled correctly": unanswerable["is_correct"].mean(),
+        "explicit refusal rate (unanswerable)": unanswerable["refused"].mean(),
         "citation accuracy": pd.to_numeric(df["citation_ok"], errors="coerce").mean(),
         "median latency (s)": df["latency_s"].median(),
         "judge errors": (df["correctness"] == "error").sum(),
@@ -173,8 +176,12 @@ def main():
     by_category.to_csv(results_dir / f"answer_by_category_{args.tag}.csv")
     review = df.reset_index()[["id", "category", "question", "reference_answer", "answer",
                                "correctness", "faithful", "reason"]]
+    review_path = results_dir / f"answer_review_{args.tag}.csv"
     review["human_agrees"] = ""  # fill in during the manual spot check
-    review.to_csv(results_dir / f"answer_review_{args.tag}.csv", index=False, encoding="utf-8-sig")
+    if review_path.exists():  # carry over earlier spot-check answers
+        old = pd.read_csv(review_path, encoding="utf-8-sig", keep_default_na=False)
+        review["human_agrees"] = review["id"].map(old.set_index("id")["human_agrees"]).fillna("")
+    review.to_csv(review_path, index=False, encoding="utf-8-sig")
 
     print("\n=== Summary ===")
     print(summary.to_string())

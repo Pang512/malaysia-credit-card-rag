@@ -11,7 +11,9 @@ from google.genai import errors, types
 from config import load_config
 from retriever import Retriever
 
-SYSTEM_PROMPT = """You answer questions about Malaysian credit card Product Disclosure Sheets (PDS).
+# Prompt versions are kept side by side, so every evaluation run stays reproducible.
+SYSTEM_PROMPTS = {
+    "v1": """You answer questions about Malaysian credit card Product Disclosure Sheets (PDS).
 
 Rules:
 1. Use ONLY the numbered context passages. Never use outside knowledge.
@@ -21,7 +23,27 @@ Rules:
 4. If the question is about a specific bank or card, never use figures from a different bank or card.
 5. If the passages only partly answer the question, answer the supported part and say what is missing.
 6. For Islamic cards (Credit Card-i), use the document's own terms (e.g. profit rate, Ta'widh, Ibra').
-7. Be concise. Quote RM amounts and percentages exactly as written."""
+7. Be concise. Quote RM amounts and percentages exactly as written.""",
+
+    "v2": """You answer questions about Malaysian credit card Product Disclosure Sheets (PDS).
+
+Rules:
+1. Use ONLY the numbered context passages. Never use outside knowledge.
+2. Cite every fact with its passage number in square brackets, e.g. [1] or [2][3].
+3. Answer whatever the passages support, even if they only answer part of the question.
+   Then state clearly what is not covered, starting with the words "The documents do not state".
+4. Only if NO passage is relevant to the question, reply exactly:
+   "I don't know based on the available documents."
+5. If the question is about a specific bank or card, never use figures from a different bank or card.
+   If the passages only cover a different card from the same bank, say so instead of assuming it applies.
+6. Always include the conditions attached to a figure: eligibility rules, "subject to approval",
+   payment-history tiers, minimums, maximums and caps.
+7. For comparisons, give each bank's figure with its citation, then a one-line conclusion.
+8. For advice questions (e.g. "which card is best for me"), summarise the relevant facts, explain
+   the trade-offs, and note that this is general information, not financial advice.
+9. For Islamic cards (Credit Card-i), use the document's own terms (e.g. profit rate, Ta'widh, Ibra').
+10. Be concise. Quote RM amounts and percentages exactly as written.""",
+}
 
 IDK = "I don't know based on the available documents."
 
@@ -39,7 +61,7 @@ def format_context(chunks):
 
 
 class RAGPipeline:
-    def __init__(self, strategy=None, cfg=None, model=None, use_fallback=True):
+    def __init__(self, strategy=None, cfg=None, model=None, use_fallback=True, prompt_version=None):
         load_dotenv()
         self.cfg = cfg or load_config()
         self.strategy = strategy or self.cfg["retrieval"]["strategy"]
@@ -48,13 +70,15 @@ class RAGPipeline:
         self.model = model or self.cfg["llm"]["model"]
         fallback = self.cfg["llm"].get("fallback_model") if use_fallback else None
         self.fallback = fallback if fallback != self.model else None
+        self.prompt_version = prompt_version or self.cfg["llm"].get("prompt_version", "v1")
+        self.system_prompt = SYSTEM_PROMPTS[self.prompt_version]
 
     def _call(self, model, prompt):
         response = self.client.models.generate_content(
             model=model,
             contents=prompt,
             config=types.GenerateContentConfig(
-                system_instruction=SYSTEM_PROMPT,
+                system_instruction=self.system_prompt,
                 temperature=self.cfg["llm"]["temperature"],
             ),
         )
@@ -94,31 +118,32 @@ class RAGPipeline:
                         if 1 <= int(n) <= len(chunks)})
         timing = {
             "retrieval_s": t1 - t0,
-            "llm_s": (t2 - t1) - waited,  # includes any failed attempts
+            "llm_s": (t2 - t1) - waited,
             "retry_wait_s": waited,
             "total_s": t2 - t0,
         }
-        return {"question": question, "answer": answer, "sources": chunks,
-                "cited": cited, "model": model_used, "timing": timing}
+        return {"question": question, "answer": answer, "sources": chunks, "cited": cited,
+                "model": model_used, "prompt_version": self.prompt_version, "timing": timing}
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ask the credit card RAG assistant a question.")
     parser.add_argument("question", nargs="*", help="Your question")
     parser.add_argument("--model", help="Use a different LLM than config.yaml")
+    parser.add_argument("--prompt", help="Prompt version, e.g. v1 or v2")
     parser.add_argument("--no-fallback", action="store_true", help="Disable the fallback model")
     args = parser.parse_args()
     question = " ".join(args.question) or "What is the late payment charge for Bank Islam credit card-i?"
 
     t_start = time.perf_counter()
-    rag = RAGPipeline(model=args.model, use_fallback=not args.no_fallback)
+    rag = RAGPipeline(model=args.model, use_fallback=not args.no_fallback, prompt_version=args.prompt)
     startup = time.perf_counter() - t_start
 
     result = rag.answer(question)
     t = result["timing"]
 
     print(f"\nQ: {result['question']}")
-    print(f"Model: {result['model']}\n")
+    print(f"Model: {result['model']} | Prompt: {result['prompt_version']}\n")
     print(f"A: {result['answer']}\n")
     print("Retrieved sources:")
     for i, c in enumerate(result["sources"], start=1):

@@ -18,6 +18,7 @@ llm:
   temperature: 0
   max_attempts: 2      # tries per model before switching to the fallback
   base_wait_s: 5       # wait before a retry (doubles each time); evaluation will use a longer wait
+  prompt_version: v1
 
 embedding:
   model: BAAI/bge-small-en-v1.5

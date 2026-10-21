@@ -15,6 +15,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--strategy", default="structured")
     parser.add_argument("--tag", default="baseline", help="name for this run, e.g. baseline or hybrid")
+    parser.add_argument("--prompt", help="prompt version, e.g. v2 (default: config.yaml)")
     args = parser.parse_args()
 
     cfg = load_config()
@@ -29,7 +30,7 @@ def main():
     todo = test[~test["id"].isin(done)]
     print(f"{len(done)} already answered, {len(todo)} to go")
 
-    rag = RAGPipeline(strategy=args.strategy, cfg=cfg, use_fallback=False)
+    rag = RAGPipeline(strategy=args.strategy, cfg=cfg, use_fallback=False, prompt_version=args.prompt)
     with open(out_path, "a", encoding="utf-8") as f:
         for n, (_, q) in enumerate(todo.iterrows(), start=1):
             try:
@@ -39,7 +40,7 @@ def main():
                 break
             record = {
                 "id": q["id"], "question": q["question"], "answer": r["answer"],
-                "model": r["model"], "strategy": args.strategy, "cited": r["cited"],
+                "model": r["model"], "prompt_version": r["prompt_version"], "strategy": args.strategy, "cited": r["cited"],
                 "chunk_ids": [c["chunk_id"] for c in r["sources"]],
                 "sources": [f"{c['doc_id']}:{c['page']}" for c in r["sources"]],
                 "timing": r["timing"],
