@@ -57,7 +57,13 @@ def call_judge(client, model, prompt):
                 config=types.GenerateContentConfig(temperature=0,
                                                    response_mime_type="application/json"),
             )
-            return json.loads(response.text)
+            data = json.loads(response.text)
+            if isinstance(data, list):  # some models wrap the object in a list
+                data = data[0] if data else {}
+            # keep only the fields we asked for, so the judge can never overwrite ours
+            return {"correctness": data.get("correctness", "error"),
+                    "faithful": data.get("faithful"),
+                    "reason": data.get("reason", "")}
         except errors.APIError as e:
             if e.code == 429 and "PerDay" in str(e):
                 raise DailyQuotaExceeded(f"Daily free-tier quota used up for {model}.") from e
@@ -90,6 +96,12 @@ def main():
     chunks = {c["chunk_id"]: c for c in
               load_jsonl(ROOT / cfg["paths"]["index_dir"] / f"{strategy}_chunks.jsonl")}
     test = pd.read_csv(ROOT / "eval" / "test_set.csv", keep_default_na=False).set_index("id")
+    dupes = test.index[test.index.duplicated()].unique().tolist()
+    if dupes:
+        raise SystemExit(f"Duplicate ids in test_set.csv: {dupes}. Fix them before judging.")
+    missing = {a["id"] for a in answers} - set(test.index)
+    if missing:
+        raise SystemExit(f"Answers with no matching test question: {sorted(missing)}")
 
     judged_path = results_dir / f"judgements_{args.tag}.jsonl"
     done = {r["id"] for r in load_jsonl(judged_path)} if judged_path.exists() else set()
@@ -117,8 +129,8 @@ def main():
                     print(f"\n{e} Rerun later to resume, or change judge_model in config.yaml.")
                     return
                 time.sleep(cfg["evaluation"]["sleep_s"])
-                record = {"id": a["id"], "refused": refused,
-                      "judge_model": "rule" if refused else judge_model, **verdict}
+                record = {**verdict, "id": a["id"], "refused": refused,
+                      "judge_model": "rule" if refused else judge_model}
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
             f.flush()
             print(f"{a['id']}: {record['correctness']} | faithful={record['faithful']}")

@@ -1,7 +1,11 @@
 category,n,correct,correct_or_partial,faithful
-aggregation,2,0.0,1.0,1.0
-comparison,8,1.0,1.0,1.0
-eligibility,6,0.83,1.0,1.0
-fact,20,0.9,0.95,1.0
-islamic,5,0.8,1.0,1.0
+advisory,2,1.0,1.0,1.0
+aggregation,1,0.0,1.0,1.0
+comparison,4,0.75,1.0,1.0
+eligibility,5,0.8,1.0,1.0
+extraction_trap,1,1.0,1.0,1.0
+fact,19,0.89,0.95,1.0
+islamic,4,0.75,1.0,1.0
+multi_source,1,1.0,1.0,1.0
 table,9,1.0,1.0,1.0
+unanswerable,4,1.0,1.0,1.0
