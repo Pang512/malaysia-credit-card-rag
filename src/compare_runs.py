@@ -17,14 +17,16 @@ def main():
     print("=== Summary ===")
     print(summary.to_string())
 
-    base, new = args.tags[0], args.tags[-1]
-    a = pd.read_csv(res / f"answer_review_{base}.csv", encoding="utf-8-sig").set_index("id")
-    b = pd.read_csv(res / f"answer_review_{new}.csv", encoding="utf-8-sig").set_index("id")
-    changed = a.index[a["correctness"].ne(b["correctness"])]
-    print(f"\n=== {len(changed)} questions changed ({base} -> {new}) ===")
-    for qid in changed:
-        print(f"  {qid} ({a.loc[qid, 'category']}): {a.loc[qid, 'correctness']} -> {b.loc[qid, 'correctness']}"
-              f" | faithful {a.loc[qid, 'faithful']} -> {b.loc[qid, 'faithful']}")
+    # Compare each run with the one before it, so every change is attributed to one step
+    for base, new in zip(args.tags, args.tags[1:]):
+        a = pd.read_csv(res / f"answer_review_{base}.csv", encoding="utf-8-sig").set_index("id")
+        b = pd.read_csv(res / f"answer_review_{new}.csv", encoding="utf-8-sig").set_index("id")
+        changed = a.index[a["correctness"].ne(b["correctness"])
+                          | a["faithful"].astype(str).ne(b["faithful"].astype(str))]
+        print(f"\n=== {len(changed)} questions changed ({base} -> {new}) ===")
+        for qid in changed:
+            print(f"  {qid} ({a.loc[qid, 'category']}): {a.loc[qid, 'correctness']} -> "
+                  f"{b.loc[qid, 'correctness']} | faithful {a.loc[qid, 'faithful']} -> {b.loc[qid, 'faithful']}")
 
 
 if __name__ == "__main__":
