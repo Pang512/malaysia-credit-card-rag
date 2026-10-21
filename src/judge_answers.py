@@ -129,14 +129,18 @@ def main():
                     print(f"\n{e} Rerun later to resume, or change judge_model in config.yaml.")
                     return
                 time.sleep(cfg["evaluation"]["sleep_s"])
-                record = {**verdict, "id": a["id"], "refused": refused,
+
+            # Built for EVERY question (outside the if/else), with our own fields last
+            record = {**verdict, "id": a["id"], "refused": refused,
                       "judge_model": "rule" if refused else judge_model}
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
             f.flush()
-            print(f"{a['id']}: {record['correctness']} | faithful={record['faithful']}")
+            print(f"{a['id']}: {record['correctness']} | faithful={record['faithful']} | refused={refused}")
 
     # ---------- Summary ----------
     judged = pd.DataFrame(load_jsonl(judged_path)).set_index("id")
+    if not judged.index.is_unique:
+        raise SystemExit(f"Duplicate judgement ids: {judged.index[judged.index.duplicated()].tolist()}")
     ans = pd.DataFrame(answers).set_index("id")
     df = test.join(judged, how="inner").join(ans[["answer", "cited", "sources", "timing", "model"]])
     df["latency_s"] = df["timing"].apply(lambda t: t["total_s"])

@@ -1,7 +1,7 @@
 ,value
 questions,50.0
-accuracy (correct),0.87
-accuracy (correct or partial),0.978
+accuracy (correct),0.739
+accuracy (correct or partial),0.826
 faithfulness,1.0
 false refusal rate (answerable),0.152
 correct refusal rate (unanswerable),1.0
