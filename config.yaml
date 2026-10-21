@@ -32,6 +32,7 @@ retrieval:
   mode: hybrid        # dense | bm25 | hybrid
   candidates: 20     # each method's top 20 go into the fusion
   rrf_k: 60          # standard RRF constant, deliberately not tuned
+  reranker: cross-encoder/ms-marco-MiniLM-L-6-v2
 
 evaluation:
   judge_model: gemini-3.1-flash-lite

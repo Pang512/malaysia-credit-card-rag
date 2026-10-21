@@ -7,7 +7,7 @@ from config import ROOT, load_config
 from retriever import Retriever
 
 STRATEGIES = ["fixed", "structured"]
-MODES = ["dense", "bm25", "hybrid"]
+MODES = ["dense", "bm25", "hybrid", "hybrid_rerank"]
 KS = [1, 3, 5]
 K_MAX = max(KS)
 
@@ -86,10 +86,10 @@ def main():
         print(f"  {mode}: {', '.join(misses['id']) or 'none'}")
 
     # Questions where hybrid and dense disagree, to see exactly what changed
-    d = structured[structured["mode"] == "dense"].set_index("id")
-    h = structured[structured["mode"] == "hybrid"].set_index("id")
+    d = structured[structured["mode"] == "hybrid"].set_index("id")
+    h = structured[structured["mode"] == "hybrid_rerank"].set_index("id")
     changed = d.index[d["rank"].fillna(99).ne(h["rank"].fillna(99))]
-    print("\n=== Rank changes, dense -> hybrid (structured; '-' = not in top 5) ===")
+    print("\n=== Rank changes, hybrid -> hybrid_rerank (structured; '-' = not in top 5) ===")
     for qid in changed:
         fmt = lambda x: "-" if pd.isna(x) else int(x)
         print(f"  {qid} ({d.loc[qid, 'category']}): {fmt(d.loc[qid, 'rank'])} -> {fmt(h.loc[qid, 'rank'])}"
