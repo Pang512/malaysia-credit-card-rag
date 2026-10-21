@@ -13,7 +13,7 @@ chunking:
     max_words: 300
 
 llm:
-  model: gemini-3.8-flash
+  model: gemini-3.5-flash-lite
   fallback_model: gemini-3.5-flash   # set to null to disable
   temperature: 0
   max_attempts: 2      # tries per model before switching to the fallback
@@ -28,3 +28,7 @@ retrieval:
   top_k: 5
   languages: [en]
   strategy: structured
+
+evaluation:
+  judge_model: gemini-3.1-flash-lite
+  sleep_s: 4        # pause between API calls to stay under free-tier limits
