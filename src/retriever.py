@@ -1,43 +1,80 @@
-"""Search a FAISS index for the chunks most similar to a question."""
+"""Search the chunks with dense (embedding), BM25 (keyword) or hybrid retrieval."""
+import re
 import sys
+from collections import defaultdict
 
 import faiss
 import numpy as np
+from rank_bm25 import BM25Okapi
 from sentence_transformers import SentenceTransformer
 
 from config import ROOT, load_config
 from utils import load_jsonl
 
+# Very common words that carry no meaning for keyword matching
+STOPWORDS = {
+    "a", "an", "the", "and", "or", "of", "to", "for", "in", "on", "at", "by", "with",
+    "is", "are", "be", "if", "it", "this", "that", "as", "from", "any", "i", "me", "my",
+    "you", "your", "we", "our", "can", "do", "does", "what", "which", "how", "much", "will",
+}
+
+
+def tokenize(text):
+    """Lowercase words, keeping amounts like rm1,215.09 and 2.5 as single tokens."""
+    tokens = re.findall(r"[a-z0-9]+(?:[.,'][a-z0-9]+)*", text.lower())
+    return [t for t in tokens if t not in STOPWORDS]
+
 
 class Retriever:
     def __init__(self, strategy, cfg=None, model=None):
         self.cfg = cfg or load_config()
+        r = self.cfg["retrieval"]
         index_dir = ROOT / self.cfg["paths"]["index_dir"]
         self.index = faiss.read_index(str(index_dir / f"{strategy}.faiss"))
         self.chunks = load_jsonl(index_dir / f"{strategy}_chunks.jsonl")
         self.model = model or SentenceTransformer(self.cfg["embedding"]["model"])
         self.query_instruction = self.cfg["embedding"].get("query_instruction", "")
+        self.mode = r.get("mode", "dense")
+        self.candidates = r.get("candidates", 20)
+        self.rrf_k = r.get("rrf_k", 60)
+        # The BM25 index is tiny (one entry per chunk), so it's built in memory at startup
+        self.bm25 = BM25Okapi([tokenize(c["text"]) for c in self.chunks])
 
-    def search(self, query, k=None):
-        k = k or self.cfg["retrieval"]["top_k"]
+    def _dense(self, query, n):
         q = self.model.encode([self.query_instruction + query], normalize_embeddings=True)
-        scores, ids = self.index.search(np.asarray(q, dtype="float32"), k)
+        scores, ids = self.index.search(np.asarray(q, dtype="float32"), n)
+        return [(int(i), float(s)) for i, s in zip(ids[0], scores[0])]
+
+    def _bm25(self, query, n):
+        # Note: no query instruction here; BM25 only matches the user's own words
+        scores = self.bm25.get_scores(tokenize(query))
+        top = np.argsort(scores)[::-1][:n]
+        return [(int(i), float(scores[i])) for i in top]
+
+    def _hybrid(self, query, n):
+        fused = defaultdict(float)
+        for ranking in (self._dense(query, self.candidates), self._bm25(query, self.candidates)):
+            for rank, (idx, _) in enumerate(ranking, start=1):
+                fused[idx] += 1 / (self.rrf_k + rank)  # Reciprocal Rank Fusion
+        return sorted(fused.items(), key=lambda x: x[1], reverse=True)[:n]
+
+    def search(self, query, k=None, mode=None):
+        k = k or self.cfg["retrieval"]["top_k"]
+        mode = mode or self.mode
+        ranked = {"dense": self._dense, "bm25": self._bm25, "hybrid": self._hybrid}[mode](query, k)
         results = []
-        for rank, (score, idx) in enumerate(zip(scores[0], ids[0]), start=1):
+        for rank, (idx, score) in enumerate(ranked, start=1):
             chunk = dict(self.chunks[idx])
-            chunk["score"] = float(score)
-            chunk["rank"] = rank
+            chunk.update(score=score, rank=rank, mode=mode)
             results.append(chunk)
         return results
 
 
 if __name__ == "__main__":
-    question = " ".join(sys.argv[1:]) or "What is the late payment charge for Bank Islam credit card-i?"
-    cfg = load_config()
-    model = SentenceTransformer(cfg["embedding"]["model"])  # load once, share across both
-    for strategy in ["fixed", "structured"]:
-        retriever = Retriever(strategy, cfg, model)
-        print(f"\n===== {strategy} | Q: {question} =====")
-        for r in retriever.search(question):
-            preview = r["text"].replace("\n", " ")[:110]
+    question = " ".join(sys.argv[1:]) or "Can I get a credit card without proof of income?"
+    retriever = Retriever("structured")
+    for mode in ["dense", "bm25", "hybrid"]:
+        print(f"\n===== {mode} | Q: {question} =====")
+        for r in retriever.search(question, mode=mode):
+            preview = r["text"].replace("\n", " ")[:100]
             print(f"#{r['rank']} score={r['score']:.3f} | {r['bank']} p{r['page']} | {preview}")

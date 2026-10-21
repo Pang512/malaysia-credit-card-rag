@@ -16,9 +16,12 @@ def main():
     parser.add_argument("--strategy", default="structured")
     parser.add_argument("--tag", default="baseline", help="name for this run, e.g. baseline or hybrid")
     parser.add_argument("--prompt", help="prompt version, e.g. v2 (default: config.yaml)")
+    parser.add_argument("--mode", help="retrieval mode: dense, bm25 or hybrid (default: config.yaml)")
     args = parser.parse_args()
 
     cfg = load_config()
+    if args.mode:
+        cfg["retrieval"]["mode"] = args.mode
     cfg["llm"].update(max_attempts=4, base_wait_s=15)  # patient retries: completeness beats speed here
     sleep_s = cfg["evaluation"]["sleep_s"]
 
@@ -40,7 +43,7 @@ def main():
                 break
             record = {
                 "id": q["id"], "question": q["question"], "answer": r["answer"],
-                "model": r["model"], "prompt_version": r["prompt_version"], "strategy": args.strategy, "cited": r["cited"],
+                "model": r["model"], "prompt_version": r["prompt_version"], "retrieval_mode": rag.retriever.mode, "strategy": args.strategy, "cited": r["cited"],
                 "chunk_ids": [c["chunk_id"] for c in r["sources"]],
                 "sources": [f"{c['doc_id']}:{c['page']}" for c in r["sources"]],
                 "timing": r["timing"],
