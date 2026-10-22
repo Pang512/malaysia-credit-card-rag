@@ -1,4 +1,4 @@
-"""Two chunking strategies, so we can compare them in evaluation."""
+"""Chunking strategies, so we can compare them in evaluation."""
 
 META_KEYS = ["doc_id", "bank", "product", "card_type",
              "shariah_concept", "language", "valid_as_at", "page"]
@@ -14,7 +14,7 @@ def make_chunk(page, text, strategy, n):
 
 
 def chunk_fixed(pages, chunk_size=150, overlap=30):
-    """Strategy A: sliding window over words, ignoring document structure."""
+    """Sliding window over words, ignoring document structure."""
     chunks = []
     step = chunk_size - overlap
     for p in pages:
@@ -27,8 +27,8 @@ def chunk_fixed(pages, chunk_size=150, overlap=30):
     return chunks
 
 
-def chunk_structured(pages, max_words=300):
-    """Strategy B: group whole lines, and add a header naming bank, product and page."""
+def chunk_structured(pages, max_words=300, strategy="structured"):
+    """Group whole lines, and add a header naming bank, product and page."""
     chunks = []
     for p in pages:
         header = f"[{p['bank']} | {p['product']} | page {p['page']}]"
@@ -37,11 +37,11 @@ def chunk_structured(pages, max_words=300):
             n_words = len(line.split())
             if current and count + n_words > max_words:
                 text = header + "\n" + "\n".join(current)
-                chunks.append(make_chunk(p, text, "structured", len(chunks)))
+                chunks.append(make_chunk(p, text, strategy, len(chunks)))
                 current, count = [], 0
             current.append(line)
             count += n_words
         if current:
             text = header + "\n" + "\n".join(current)
-            chunks.append(make_chunk(p, text, "structured", len(chunks)))
+            chunks.append(make_chunk(p, text, strategy, len(chunks)))
     return chunks

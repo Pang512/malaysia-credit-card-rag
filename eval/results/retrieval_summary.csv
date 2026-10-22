@@ -2,8 +2,9 @@ strategy,mode,hit@1,hit@3,hit@5,MRR,recall@5,doc_hit@5
 fixed,bm25,0.8,0.933,0.956,0.854,0.883,1.0
 fixed,dense,0.711,0.844,0.978,0.798,0.876,1.0
 fixed,hybrid,0.778,0.933,0.978,0.854,0.869,1.0
-fixed,hybrid_rerank,0.778,0.844,0.933,0.832,0.87,1.0
 structured,bm25,0.8,0.978,1.0,0.887,0.946,1.0
 structured,dense,0.822,0.911,0.956,0.874,0.902,0.978
 structured,hybrid,0.889,1.0,1.0,0.933,0.929,1.0
-structured,hybrid_rerank,0.867,0.978,0.978,0.919,0.943,1.0
+structured_tables,bm25,0.889,0.978,1.0,0.928,0.928,1.0
+structured_tables,dense,0.822,0.933,0.956,0.864,0.901,0.978
+structured_tables,hybrid,0.911,1.0,1.0,0.944,0.909,1.0

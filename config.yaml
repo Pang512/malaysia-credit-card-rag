@@ -11,6 +11,8 @@ chunking:
     overlap_words: 30
   structured:
     max_words: 300
+  structured_tables:
+    max_words: 250   # repeated column names make lines longer, so a little lower to stay under 512 tokens
 
 llm:
   model: gemini-3.5-flash-lite

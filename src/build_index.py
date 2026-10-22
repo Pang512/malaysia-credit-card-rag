@@ -6,7 +6,7 @@ from sentence_transformers import SentenceTransformer
 from config import ROOT, load_config
 from utils import load_jsonl, save_jsonl
 
-STRATEGIES = ["fixed", "structured"]
+STRATEGIES = ["fixed", "structured", "structured_tables"]
 
 
 def main():
