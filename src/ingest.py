@@ -33,25 +33,44 @@ def clean_cell(value):
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
+def merged_value(r, c, rows, boxes, values):
+    """Find the merged cell covering position (r, c) using cell positions on the page:
+    the cell above (spanning rows) or the cell to the left (spanning columns).
+    If neither clearly covers it, return "" rather than guess."""
+    above = next((rr for rr in range(r - 1, -1, -1) if rows[rr][c] is not None), None)
+    left = next((cc for cc in range(c - 1, -1, -1) if rows[r][cc] is not None), None)
+    row_boxes = [b for b in boxes[r] if b]
+    row_top = min(b[1] for b in row_boxes) if row_boxes else None
+    col_left = boxes[above][c][0] if above is not None and boxes[above][c] else None
+
+    # Vertical merge: the cell above reaches down into this row (e.g. Nadi's 14%)
+    if above is not None and row_top is not None and boxes[above][c] and boxes[above][c][3] > row_top + 1:
+        return values[above][c]
+    # Horizontal merge: the cell to the left reaches across into this column (e.g. PB Quantum)
+    if left is not None and col_left is not None and boxes[r][left] and boxes[r][left][2] > col_left + 1:
+        return values[r][left]
+    return ""
+
+
 def table_to_lines(table):
     """Turn a table into self-describing rows: 'Header: value | Header: value'."""
     rows = table.extract()
     if not rows:
         return []
+    boxes = [row.cells for row in table.rows]  # cell positions; None where a merged cell covers it
     headers = [clean_cell(n) or f"Column {i + 1}" for i, n in enumerate(table.header.names)]
-    data = rows if table.header.external else rows[1:]  # first row is the header unless it sits outside
-    previous = [""] * len(headers)
+    values = [[clean_cell(v) for v in row] for row in rows]
+    for r, row in enumerate(rows):
+        for c in range(min(len(headers), len(row))):
+            if row[c] is None:
+                values[r][c] = merged_value(r, c, rows, boxes, values)
+
+    start = 0 if table.header.external else 1  # skip the header row when it's inside the table
     lines = []
-    for row in data:
-        cells = []
-        for i in range(len(headers)):
-            value = row[i] if i < len(row) else None
-            # None = cell covered by a merged cell, so it takes the value from the row above.
-            # An ordinary empty cell is "" and stays empty.
-            cells.append(previous[i] if value is None else clean_cell(value))
-        previous = cells
+    for r in range(start, len(rows)):
+        cells = values[r][:len(headers)]
         if any(cells):
-            lines.append(" | ".join(f"{h}: {c}" for h, c in zip(headers, cells) if c))
+            lines.append(" | ".join(f"{h}: {v}" for h, v in zip(headers, cells) if v))
     return lines
 
 
