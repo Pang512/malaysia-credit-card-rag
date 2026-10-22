@@ -34,43 +34,63 @@ def clean_cell(value):
 
 
 def merged_value(r, c, rows, boxes, values):
-    """Find the merged cell covering position (r, c) using cell positions on the page:
-    the cell above (spanning rows) or the cell to the left (spanning columns).
-    If neither clearly covers it, return "" rather than guess."""
+    """Find the merged cell covering position (r, c) using cell positions on the page.
+    Returns (value, kind): 'down' if the cell above spans into this row,
+    'across' if the cell to the left spans into this column, or ("", None) if unclear."""
     above = next((rr for rr in range(r - 1, -1, -1) if rows[rr][c] is not None), None)
     left = next((cc for cc in range(c - 1, -1, -1) if rows[r][cc] is not None), None)
     row_boxes = [b for b in boxes[r] if b]
     row_top = min(b[1] for b in row_boxes) if row_boxes else None
     col_left = boxes[above][c][0] if above is not None and boxes[above][c] else None
 
-    # Vertical merge: the cell above reaches down into this row (e.g. Nadi's 14%)
     if above is not None and row_top is not None and boxes[above][c] and boxes[above][c][3] > row_top + 1:
-        return values[above][c]
-    # Horizontal merge: the cell to the left reaches across into this column (e.g. PB Quantum)
+        return values[above][c], "down"      # e.g. Nadi's 14% covering several rows
     if left is not None and col_left is not None and boxes[r][left] and boxes[r][left][2] > col_left + 1:
-        return values[r][left]
-    return ""
+        return values[r][left], "across"     # e.g. PB Quantum's fee covering two columns
+    return "", None
+
+
+def join_headers(names):
+    """Combine the header pieces under one physical cell.
+    Split words are rejoined ('P' + 'er Month' -> 'Per Month'); real labels are kept
+    ('Principal' + 'Supplementary' -> 'Principal / Supplementary')."""
+    parts = [n for n in names if n and not n.startswith("Column ")]
+    if not parts:
+        return names[0]
+    label = parts[0]
+    for part in parts[1:]:
+        label = label + part if len(label) <= 2 else f"{label} / {part}"
+    return label
 
 
 def table_to_lines(table):
-    """Turn a table into self-describing rows: 'Header: value | Header: value'."""
+    """Turn a table into self-describing rows, printing each physical cell once."""
     rows = table.extract()
     if not rows:
         return []
     boxes = [row.cells for row in table.rows]  # cell positions; None where a merged cell covers it
     headers = [clean_cell(n) or f"Column {i + 1}" for i, n in enumerate(table.header.names)]
     values = [[clean_cell(v) for v in row] for row in rows]
+    same_as_left = [[False] * len(row) for row in rows]  # True = part of the cell to its left
+
     for r, row in enumerate(rows):
         for c in range(min(len(headers), len(row))):
             if row[c] is None:
-                values[r][c] = merged_value(r, c, rows, boxes, values)
+                values[r][c], kind = merged_value(r, c, rows, boxes, values)
+                same_as_left[r][c] = kind == "across"
 
     start = 0 if table.header.external else 1  # skip the header row when it's inside the table
     lines = []
     for r in range(start, len(rows)):
-        cells = values[r][:len(headers)]
-        if any(cells):
-            lines.append(" | ".join(f"{h}: {v}" for h, v in zip(headers, cells) if v))
+        cells = []  # one entry per physical cell: [header pieces, value]
+        for c in range(min(len(headers), len(values[r]))):
+            if same_as_left[r][c] and cells:
+                cells[-1][0].append(headers[c])  # same physical cell: collect its header piece
+            else:
+                cells.append([[headers[c]], values[r][c]])
+        parts = [f"{join_headers(h)}: {v}" for h, v in cells if v]
+        if parts:
+            lines.append(" | ".join(parts))
     return lines
 
 
@@ -89,7 +109,9 @@ def table_aware_text(page):
         contains_other = any(j != i and rect != other and rect.contains(other)
                              for j, other in enumerate(rects))
         long_header = any(len(clean_cell(name)) > 80 for name in table.header.names)
-        if contains_other or long_header:
+        # Real data tables have short cells; a cell holding a paragraph means a layout box
+        paragraph_cell = any(len(clean_cell(v).split()) > 60 for row in table.extract() for v in row if v)
+        if contains_other or long_header or paragraph_cell:
             continue
         tables.append(table)
         boxes.append(rect)

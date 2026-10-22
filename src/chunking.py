@@ -26,6 +26,12 @@ def chunk_fixed(pages, chunk_size=150, overlap=30):
                 break
     return chunks
 
+def split_long_line(line, max_words):
+    """Split a line longer than max_words into pieces, so no single line can exceed the limit."""
+    words = line.split()
+    if len(words) <= max_words:
+        return [line]
+    return [" ".join(words[i:i + max_words]) for i in range(0, len(words), max_words)]
 
 def chunk_structured(pages, max_words=300, strategy="structured"):
     """Group whole lines, and add a header naming bank, product and page."""
@@ -33,7 +39,8 @@ def chunk_structured(pages, max_words=300, strategy="structured"):
     for p in pages:
         header = f"[{p['bank']} | {p['product']} | page {p['page']}]"
         current, count = [], 0
-        for line in p["text"].split("\n"):
+        lines = [piece for line in p["text"].split("\n") for piece in split_long_line(line, max_words)]
+        for line in lines:
             n_words = len(line.split())
             if current and count + n_words > max_words:
                 text = header + "\n" + "\n".join(current)
