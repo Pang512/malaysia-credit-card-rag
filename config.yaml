@@ -30,7 +30,7 @@ embedding:
 retrieval:
   top_k: 5
   languages: [en]
-  strategy: structured
+  strategy: structured_tables
   mode: hybrid        # dense | bm25 | hybrid
   candidates: 20     # each method's top 20 go into the fusion
   rrf_k: 60          # standard RRF constant, deliberately not tuned
