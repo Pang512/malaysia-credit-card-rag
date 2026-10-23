@@ -11,6 +11,9 @@ from google import genai
 from google.genai import errors, types
 
 from catalog import CARD_FIELDS, Catalog
+
+TEXT_FIELDS = ["overseas_fee_text", "late_payment_text", "cash_advance_fee_text"]
+
 from config import load_config
 from generator import RETRYABLE
 from retriever import Retriever
@@ -37,6 +40,8 @@ Rules:
    Never filter by words in card names (e.g. "Travel", "Cash") unless the user names that card.
 5. If the tools return nothing relevant, reply exactly: "I don't know based on the available documents."
 6. Answer what the results support, then state what is not covered, starting with "The documents do not state".
+   Before saying the documents do not state something, call search_documents for it at least once,
+   using the user's own wording as the query.
 7. Always include the conditions attached to a figure: waiver rules, payment tiers, employer type, caps.
    An annual fee of 0 means waived or free; check annual_fee_note for conditions.
 8. Never mix figures between banks or cards. Banks other than the 8 above (e.g. Hong Leong) are not covered.
@@ -50,6 +55,8 @@ Rules:
 11. Be concise. Use a short table when comparing three or more cards. Describe the data exactly
     (e.g. "credit cards", never "charge cards" unless the data says so)."""
 
+
+AGENT_VERSION = "agent_v2"
 
 class Agent:
     def __init__(self, cfg=None, model=None):
@@ -78,7 +85,8 @@ class Agent:
             bank: optional bank name to search only that bank's documents, e.g. "Bank Islam".
         """
         k = self.cfg["retrieval"]["top_k"]
-        results = self.retriever.search(query, k=k * 4 if bank else k)
+        # Pre-filter: with a bank given, rank ALL chunks, then keep that bank's best k
+        results = self.retriever.search(query, k=len(self.retriever.chunks) if bank else k)
         if bank:
             results = [r for r in results if bank.lower() in r["bank"].lower()][:k]
         passages = []
@@ -117,7 +125,8 @@ class Agent:
                                     "doc_id": row["doc_id"], "pages": pages, "catalog_row": int(idx),
                                     "valid_as_at": row["valid_as_at"]})
             card = {"ref": ref}
-            for field in CARD_FIELDS:
+            # Full wording only for small result sets (comparisons); keep big lists compact and fast
+            for field in CARD_FIELDS + (TEXT_FIELDS if len(rows) <= 10 else []):
                 value = row[field]
                 card[field] = "not stated in PDS" if pd.isna(value) else (
                     value.item() if hasattr(value, "item") else value)
@@ -173,7 +182,7 @@ class Agent:
         cited = sorted({int(n) for n in re.findall(r"\[(\d+)\]", answer) if 1 <= int(n) <= len(self.sources)})
         return {"question": question, "answer": answer, "sources": self.sources, "cited": cited,
                 "tool_calls": self.tool_log, "llm_calls": llm_calls, "model": self.model,
-                "timing": {"total_s": time.perf_counter() - t0}}
+                "agent_version": AGENT_VERSION, "timing": {"total_s": time.perf_counter() - t0}}
 
 
 if __name__ == "__main__":

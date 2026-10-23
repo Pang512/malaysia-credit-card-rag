@@ -56,6 +56,7 @@ def main():
                     "context_refs": [{"kind": s["kind"], "chunk_id": s.get("chunk_id"),
                                       "catalog_row": s.get("catalog_row")} for s in r["sources"]],
                     "sources": [[f"{s['doc_id']}:{p}" for p in s["pages"]] for s in r["sources"]],
+                    "agent_version": r["agent_version"],
                 }
             else:
                 extra = {

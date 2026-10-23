@@ -55,7 +55,8 @@ class Retriever:
 
     def _hybrid(self, query, n):
         fused = defaultdict(float)
-        for ranking in (self._dense(query, self.candidates), self._bm25(query, self.candidates)):
+        pool = max(self.candidates, n)  # when asked for many results (in-bank search), rank everything
+        for ranking in (self._dense(query, pool), self._bm25(query, pool)):
             for rank, (idx, _) in enumerate(ranking, start=1):
                 fused[idx] += 1 / (self.rrf_k + rank)  # Reciprocal Rank Fusion
         return sorted(fused.items(), key=lambda x: x[1], reverse=True)[:n]
