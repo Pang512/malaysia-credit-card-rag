@@ -1,0 +1,142 @@
+[
+  {
+    "card_name": "Visa Platinum",
+    "network": "Visa",
+    "annual_fee_principal_rm": 138.0,
+    "annual_fee_supplementary_rm": 68.0,
+    "annual_fee_note": "First (1st) year Annual Fee is WAIVED. For subsequent years, the annual fee waiver is subject to a minimum of 12 retail transactions per year.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the outstanding balance (comprising retail transactions and cash withdrawals only), subject to a maximum of RM 100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Exchange rate will be based on the determination by Visa at the conversion time. The exchange rate may differ from the rate in the effect on the date of transaction due to market fluctuations. 1% service fee is charged on the converted amount.",
+    "cash_advance_fee_text": "2.0% on withdrawn amount OR RM 30, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Credit Card Shield Takaful Plan coverage is fully borne by the Bank for all card types.",
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "Muamalat POS Visa Platinum",
+    "network": "Visa",
+    "annual_fee_principal_rm": 80.0,
+    "annual_fee_supplementary_rm": 68.0,
+    "annual_fee_note": "First (1st) year Annual Fee is WAIVED. For subsequent years, the annual fee waiver is subject to a minimum of 12 retail transactions per year.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the outstanding balance (comprising retail transactions and cash withdrawals only), subject to a maximum of RM 100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Exchange rate will be based on the determination by Visa at the conversion time. The exchange rate may differ from the rate in the effect on the date of transaction due to market fluctuations. 1% service fee is charged on the converted amount.",
+    "cash_advance_fee_text": "2.0% on withdrawn amount OR RM 30, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Credit Card Shield Takaful Plan coverage is fully borne by the Bank for all card types.",
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "Amanah Raya Visa Platinum",
+    "network": "Visa",
+    "annual_fee_principal_rm": 80.0,
+    "annual_fee_supplementary_rm": 68.0,
+    "annual_fee_note": "First (1st) year Annual Fee is WAIVED. For subsequent years, the annual fee waiver is subject to a minimum of 12 retail transactions per year.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the outstanding balance (comprising retail transactions and cash withdrawals only), subject to a maximum of RM 100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Exchange rate will be based on the determination by Visa at the conversion time. The exchange rate may differ from the rate in the effect on the date of transaction due to market fluctuations. 1% service fee is charged on the converted amount.",
+    "cash_advance_fee_text": "2.0% on withdrawn amount OR RM 30, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Credit Card Shield Takaful Plan coverage is fully borne by the Bank for all card types.",
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "EON Visa Platinum",
+    "network": "Visa",
+    "annual_fee_principal_rm": 138.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "First (1st) year Annual Fee is WAIVED. For subsequent years, the annual fee waiver is subject to a minimum of 12 retail transactions per year. Supplementary card is FREE.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the outstanding balance (comprising retail transactions and cash withdrawals only), subject to a maximum of RM 100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Exchange rate will be based on the determination by Visa at the conversion time. The exchange rate may differ from the rate in the effect on the date of transaction due to market fluctuations. 1% service fee is charged on the converted amount.",
+    "cash_advance_fee_text": "2.0% on withdrawn amount OR RM 30, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Credit Card Shield Takaful Plan coverage is fully borne by the Bank for all card types.",
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "Visa Infinite",
+    "network": "Visa",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Lifetime waiver with no spending conditions.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the outstanding balance (comprising retail transactions and cash withdrawals only), subject to a maximum of RM 100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Exchange rate will be based on the determination by Visa at the conversion time. The exchange rate may differ from the rate in the effect on the date of transaction due to market fluctuations. 1% service fee is charged on the converted amount.",
+    "cash_advance_fee_text": "2.0% on withdrawn amount OR RM 30, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Credit Card Shield Takaful Plan coverage is fully borne by the Bank for all card types.",
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "Muamalat POS Visa Infinite",
+    "network": "Visa",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Lifetime waiver with no spending conditions.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the outstanding balance (comprising retail transactions and cash withdrawals only), subject to a maximum of RM 100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Exchange rate will be based on the determination by Visa at the conversion time. The exchange rate may differ from the rate in the effect on the date of transaction due to market fluctuations. 1% service fee is charged on the converted amount.",
+    "cash_advance_fee_text": "2.0% on withdrawn amount OR RM 30, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Credit Card Shield Takaful Plan coverage is fully borne by the Bank for all card types.",
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "EON Visa Infinite",
+    "network": "Visa",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Lifetime waiver with no spending conditions.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the outstanding balance (comprising retail transactions and cash withdrawals only), subject to a maximum of RM 100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Exchange rate will be based on the determination by Visa at the conversion time. The exchange rate may differ from the rate in the effect on the date of transaction due to market fluctuations. 1% service fee is charged on the converted amount.",
+    "cash_advance_fee_text": "2.0% on withdrawn amount OR RM 30, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Credit Card Shield Takaful Plan coverage is fully borne by the Bank for all card types.",
+    "source_pages": [
+      1,
+      2
+    ]
+  }
+]

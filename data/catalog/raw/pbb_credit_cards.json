@@ -1,0 +1,202 @@
+[
+  {
+    "card_name": "PB Visa Infinite Credit Card",
+    "network": "Visa",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Free-For-Life without condition for Principal and first Supplementary Card. Second and subsequent Supplementary Cards issued will be charged an annual fee of RM250 per Supplementary Card.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Local: RM4.90 + 0.39% of the total Cash Advance amount; Overseas: RM5.10 + 0.65% of the total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "PB World Mastercard Credit Card",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Free-For-Life without condition",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Local: RM1.20 + 0.01% of the total Cash Advance amount; Overseas: RM3.80 + 0.29% of the total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "PB Visa Signature Credit Card",
+    "network": "Visa",
+    "annual_fee_principal_rm": 388.0,
+    "annual_fee_supplementary_rm": 200.0,
+    "annual_fee_note": "First year annual fee waived & subsequent years’ annual fee waiver is based on a minimum of 12 transactions over the preceding 12 months.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Local: RM4.90 + 0.39% of the total Cash Advance amount; Overseas: RM5.10 + 0.65% of the total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "PB Visa/Mastercard Platinum Credit Card",
+    "network": "Visa/Mastercard",
+    "annual_fee_principal_rm": 333.0,
+    "annual_fee_supplementary_rm": 150.0,
+    "annual_fee_note": "First year annual fee waived & subsequent years’ annual fee waiver is based on a minimum of 12 transactions over the preceding 12 months.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Visa - Local: RM4.90 + 0.39% of total Cash Advance amount, Overseas: RM5.10 + 0.65% of total Cash Advance amount; Mastercard - Local: RM1.20 + 0.01% of total Cash Advance amount, Overseas: RM3.80 + 0.29% of total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "Mutual Gold-PB Visa Platinum Credit Card",
+    "network": "Visa",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Free-For-Life as long as Mutual Gold/Mutual Elite/Mutual Signature/Mutual Platinum and Mutual Prestige status is maintained with Public Mutual Berhad",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Local: RM4.90 + 0.39% of the total Cash Advance amount; Overseas: RM5.10 + 0.65% of the total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "PB Quantum Visa/Mastercard Credit Card",
+    "network": "Visa/Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Free-For-Life without condition",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Visa - Local: RM4.90 + 0.39% of total Cash Advance amount, Overseas: RM5.10 + 0.65% of total Cash Advance amount; Mastercard - Local: RM1.20 + 0.01% of total Cash Advance amount, Overseas: RM3.80 + 0.29% of total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "PB Visa/Mastercard Gold Credit Card",
+    "network": "Visa/Mastercard",
+    "annual_fee_principal_rm": 150.0,
+    "annual_fee_supplementary_rm": 100.0,
+    "annual_fee_note": "First year annual fee waived & subsequent years’ annual fee waiver is based on a minimum of 12 transactions over the preceding 12 months.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Visa - Local: RM4.90 + 0.39% of total Cash Advance amount, Overseas: RM5.10 + 0.65% of total Cash Advance amount; Mastercard - Local: RM1.20 + 0.01% of total Cash Advance amount, Overseas: RM3.80 + 0.29% of total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "PB-AIA Visa Gold Credit Card",
+    "network": "Visa",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Free-For-Life without condition",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Local: RM4.90 + 0.39% of the total Cash Advance amount; Overseas: RM5.10 + 0.65% of the total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "PB Petron Visa Gold Credit Card",
+    "network": "Visa",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Free-For-Life without condition",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Local: RM4.90 + 0.39% of the total Cash Advance amount; Overseas: RM5.10 + 0.65% of the total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "PB Visa Classic/ Standard Mastercard Credit Card",
+    "network": "Visa/Mastercard",
+    "annual_fee_principal_rm": 75.0,
+    "annual_fee_supplementary_rm": 45.0,
+    "annual_fee_note": "First year annual fee waived & subsequent years’ annual fee waiver is based on a minimum of 12 transactions over the preceding 12 months.",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "Failure to make the Minimum Payment by the Due Date, a further charge of a minimum of RM10 or 1% of total outstanding balance as at statement date, whichever is higher, capped to a maximum of RM100, shall be debited to the Card Account.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Foreign exchange spread of 1.25% of the converted Ringgit Malaysia amount for the conversion of the transactions made in foreign currency.",
+    "cash_advance_fee_text": "Visa - Local: RM4.90 + 0.39% of total Cash Advance amount, Overseas: RM5.10 + 0.65% of total Cash Advance amount; Mastercard - Local: RM1.20 + 0.01% of total Cash Advance amount, Overseas: RM3.80 + 0.29% of total Cash Advance amount",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  }
+]

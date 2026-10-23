@@ -1,0 +1,122 @@
+[
+  {
+    "card_name": "OCBC Premier Voyage",
+    "network": null,
+    "annual_fee_principal_rm": 750.0,
+    "annual_fee_supplementary_rm": 500.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% late payment charge only applicable to retail transactions and cash advances OR RM10 (whichever is higher), subject to a maximum of RM100.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Subject to currency conversion rate determined by Visa International and Mastercard Worldwide plus a standard administration cost of 1.00% for OCBC 365 Mastercard and 1.25%** for all other OCBC cards and any transaction fee charged by Visa International and Mastercard Worldwide.",
+    "cash_advance_fee_text": "5% of the amount advanced OR minimum of RM20, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "OCBC 90°N Visa Card",
+    "network": "Visa",
+    "annual_fee_principal_rm": 288.0,
+    "annual_fee_supplementary_rm": 88.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% late payment charge only applicable to retail transactions and cash advances OR RM10 (whichever is higher), subject to a maximum of RM100.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Subject to currency conversion rate determined by Visa International and Mastercard Worldwide plus a standard administration cost of 1.00% for OCBC 365 Mastercard and 1.25%** for all other OCBC cards and any transaction fee charged by Visa International and Mastercard Worldwide.",
+    "cash_advance_fee_text": "5% of the amount advanced OR minimum of RM20, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "OCBC Cashflo Mastercard",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 188.0,
+    "annual_fee_supplementary_rm": 68.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% late payment charge only applicable to retail transactions and cash advances OR RM10 (whichever is higher), subject to a maximum of RM100.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Subject to currency conversion rate determined by Visa International and Mastercard Worldwide plus a standard administration cost of 1.00% for OCBC 365 Mastercard and 1.25%** for all other OCBC cards and any transaction fee charged by Visa International and Mastercard Worldwide.",
+    "cash_advance_fee_text": "5% of the amount advanced OR minimum of RM20, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "OCBC 365 Mastercard",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 100.0,
+    "annual_fee_supplementary_rm": 50.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% late payment charge only applicable to retail transactions and cash advances OR RM10 (whichever is higher), subject to a maximum of RM100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Subject to currency conversion rate determined by Visa International and Mastercard Worldwide plus a standard administration cost of 1.00% for OCBC 365 Mastercard and 1.25%** for all other OCBC cards and any transaction fee charged by Visa International and Mastercard Worldwide.",
+    "cash_advance_fee_text": "5% of the amount advanced OR minimum of RM20, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "OCBC Great Eastern Platinum Mastercard",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "No annual fee",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% late payment charge only applicable to retail transactions and cash advances OR RM10 (whichever is higher), subject to a maximum of RM100.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Subject to currency conversion rate determined by Visa International and Mastercard Worldwide plus a standard administration cost of 1.00% for OCBC 365 Mastercard and 1.25%** for all other OCBC cards and any transaction fee charged by Visa International and Mastercard Worldwide.",
+    "cash_advance_fee_text": "5% of the amount advanced OR minimum of RM20, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  },
+  {
+    "card_name": "OCBC Titanium Mastercard (Blue/Pink)",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 75.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Supplementary: No annual fee",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% late payment charge only applicable to retail transactions and cash advances OR RM10 (whichever is higher), subject to a maximum of RM100.",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "Subject to currency conversion rate determined by Visa International and Mastercard Worldwide plus a standard administration cost of 1.00% for OCBC 365 Mastercard and 1.25%** for all other OCBC cards and any transaction fee charged by Visa International and Mastercard Worldwide.",
+    "cash_advance_fee_text": "5% of the amount advanced OR minimum of RM20, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  }
+]

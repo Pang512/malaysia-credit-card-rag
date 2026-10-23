@@ -1,0 +1,156 @@
+[
+  {
+    "card_name": "BSN Al-Aiman Visa/Mastercard Classic Credit Card",
+    "network": "Visa/Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Waived for life (no conditions attached)",
+    "min_annual_income_rm": 24000.0,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the total outstanding balance as at the statement date (comprising retail transactions and cash advance only), capped at RM100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Transactions conducted outside Malaysia will be converted to Ringgit Malaysia on the date the transaction is received and/or processed. Exchange rate will be based on the rate determined by Visa International/Mastercard Worldwide in addition to an administration cost of 1% and any transaction fee charged by Visa International/ Mastercard Worldwide.",
+    "cash_advance_fee_text": "2.69% of the amount withdrawn or a minimum of RM12.75, whichever is higher will be charged to Credit Card-i account on each Cash Advance transaction made.",
+    "best_rate_pct": 11.0,
+    "highest_rate_pct": 17.5,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "card_name": "BSN Al-Aiman Visa/Mastercard Gold Credit Card",
+    "network": "Visa/Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Waived for life (no conditions attached)",
+    "min_annual_income_rm": 36000.0,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the total outstanding balance as at the statement date (comprising retail transactions and cash advance only), capped at RM100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Transactions conducted outside Malaysia will be converted to Ringgit Malaysia on the date the transaction is received and/or processed. Exchange rate will be based on the rate determined by Visa International/Mastercard Worldwide in addition to an administration cost of 1% and any transaction fee charged by Visa International/ Mastercard Worldwide.",
+    "cash_advance_fee_text": "2.69% of the amount withdrawn or a minimum of RM12.75, whichever is higher will be charged to Credit Card-i account on each Cash Advance transaction made.",
+    "best_rate_pct": 11.0,
+    "highest_rate_pct": 17.5,
+    "benefits_text": "Automatic Takaful accident coverage up to RM100,000 when you pay the full fare of a plane ticket using a BSN Credit Card-i.",
+    "source_pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "card_name": "BSN Al-Aiman Visa/Mastercard Platinum Credit Card",
+    "network": "Visa/Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Waived for life (no conditions attached)",
+    "min_annual_income_rm": 48000.0,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the total outstanding balance as at the statement date (comprising retail transactions and cash advance only), capped at RM100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Transactions conducted outside Malaysia will be converted to Ringgit Malaysia on the date the transaction is received and/or processed. Exchange rate will be based on the rate determined by Visa International/Mastercard Worldwide in addition to an administration cost of 1% and any transaction fee charged by Visa International/ Mastercard Worldwide.",
+    "cash_advance_fee_text": "2.69% of the amount withdrawn or a minimum of RM12.75, whichever is higher will be charged to Credit Card-i account on each Cash Advance transaction made.",
+    "best_rate_pct": 11.0,
+    "highest_rate_pct": 17.5,
+    "benefits_text": "Automatic Takaful accident coverage up to RM300,000 when you pay the full fare of a plane ticket using a BSN Credit Card-i.",
+    "source_pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "card_name": "BSN-Teachers Al-Aiman Gold Credit Card",
+    "network": null,
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Waived for life (no conditions attached)",
+    "min_annual_income_rm": 24000.0,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the total outstanding balance as at the statement date (comprising retail transactions and cash advance only), capped at RM100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Transactions conducted outside Malaysia will be converted to Ringgit Malaysia on the date the transaction is received and/or processed. Exchange rate will be based on the rate determined by Visa International/Mastercard Worldwide in addition to an administration cost of 1% and any transaction fee charged by Visa International/ Mastercard Worldwide.",
+    "cash_advance_fee_text": "2.69% of the amount withdrawn or a minimum of RM12.75, whichever is higher will be charged to Credit Card-i account on each Cash Advance transaction made.",
+    "best_rate_pct": 8.88,
+    "highest_rate_pct": 14.0,
+    "benefits_text": "Automatic Takaful accident coverage up to RM100,000 when you pay the full fare of a plane ticket using a BSN Credit Card-i.",
+    "source_pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "card_name": "BSN G-Card Al-Aiman Visa Credit Card",
+    "network": "Visa",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Waived for life (no conditions attached)",
+    "min_annual_income_rm": 24000.0,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the total outstanding balance as at the statement date (comprising retail transactions and cash advance only), capped at RM100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Transactions conducted outside Malaysia will be converted to Ringgit Malaysia on the date the transaction is received and/or processed. Exchange rate will be based on the rate determined by Visa International/Mastercard Worldwide in addition to an administration cost of 1% and any transaction fee charged by Visa International/ Mastercard Worldwide.",
+    "cash_advance_fee_text": "2.69% of the amount withdrawn or a minimum of RM12.75, whichever is higher will be charged to Credit Card-i account on each Cash Advance transaction made.",
+    "best_rate_pct": 8.88,
+    "highest_rate_pct": 17.5,
+    "benefits_text": "Automatic Takaful accident coverage up to RM100,000 when you pay the full fare of a plane ticket using a BSN Credit Card-i.",
+    "source_pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "card_name": "BSN-UUM Al-Aiman Mastercard Gold Credit Card",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Waived for life (no conditions attached)",
+    "min_annual_income_rm": 24000.0,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the total outstanding balance as at the statement date (comprising retail transactions and cash advance only), capped at RM100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Transactions conducted outside Malaysia will be converted to Ringgit Malaysia on the date the transaction is received and/or processed. Exchange rate will be based on the rate determined by Visa International/Mastercard Worldwide in addition to an administration cost of 1% and any transaction fee charged by Visa International/ Mastercard Worldwide.",
+    "cash_advance_fee_text": "2.69% of the amount withdrawn or a minimum of RM12.75, whichever is higher will be charged to Credit Card-i account on each Cash Advance transaction made.",
+    "best_rate_pct": 9.95,
+    "highest_rate_pct": 17.5,
+    "benefits_text": "Automatic Takaful accident coverage up to RM100,000 when you pay the full fare of a plane ticket using a BSN Credit Card-i.",
+    "source_pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "card_name": "BSN-UUM Al-Aiman Mastercard Platinum Credit Card",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Waived for life (no conditions attached)",
+    "min_annual_income_rm": 60000.0,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the total outstanding balance as at the statement date (comprising retail transactions and cash advance only), capped at RM100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Transactions conducted outside Malaysia will be converted to Ringgit Malaysia on the date the transaction is received and/or processed. Exchange rate will be based on the rate determined by Visa International/Mastercard Worldwide in addition to an administration cost of 1% and any transaction fee charged by Visa International/ Mastercard Worldwide.",
+    "cash_advance_fee_text": "2.69% of the amount withdrawn or a minimum of RM12.75, whichever is higher will be charged to Credit Card-i account on each Cash Advance transaction made.",
+    "best_rate_pct": 9.95,
+    "highest_rate_pct": 17.5,
+    "benefits_text": "Automatic Takaful accident coverage up to RM300,000 when you pay the full fare of a plane ticket using a BSN Credit Card-i.",
+    "source_pages": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+]

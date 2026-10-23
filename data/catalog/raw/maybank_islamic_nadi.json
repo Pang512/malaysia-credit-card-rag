@@ -1,0 +1,22 @@
+[
+  {
+    "card_name": "Maybank Islamic Nadi Mastercard Credit Card-i",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": null,
+    "annual_fee_note": "Waived",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of the outstanding balance in respect of retail and cash advance transactions, or RM10, whichever is higher capped at RM100.",
+    "overseas_fee_pct": 1.0,
+    "overseas_fee_text": "Include 1% Bank charge plus network conversion charges",
+    "cash_advance_fee_text": "2.52% of the withdrawal amount or minimum RM11.65, whichever is higher",
+    "best_rate_pct": 14.0,
+    "highest_rate_pct": 14.0,
+    "benefits_text": null,
+    "source_pages": [
+      1,
+      2
+    ]
+  }
+]

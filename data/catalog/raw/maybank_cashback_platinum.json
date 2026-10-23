@@ -1,0 +1,22 @@
+[
+  {
+    "card_name": "Maybank Cash Back Mastercard Platinum",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": null,
+    "annual_fee_note": "Free for life",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 100.0,
+    "late_payment_text": "1% of unpaid outstanding balance as at statement date/minimum of RM10.00, whichever is higher up to maximum of RM100.00.",
+    "overseas_fee_pct": null,
+    "overseas_fee_text": "Conversion rate determined by Mastercard",
+    "cash_advance_fee_text": "Flat rate of 2.52% of the total amount of cash advance or minimum RM11.65, whichever is higher.",
+    "best_rate_pct": 15.0,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Cashback-driven product.",
+    "source_pages": [
+      1,
+      2
+    ]
+  }
+]

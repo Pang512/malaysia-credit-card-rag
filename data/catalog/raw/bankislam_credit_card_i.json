@@ -1,0 +1,178 @@
+[
+  {
+    "card_name": "Bank Islam Mastercard World Credit Card-i",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 777.0,
+    "annual_fee_supplementary_rm": 333.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 50.0,
+    "late_payment_text": "Late payment charges are 1% of the outstanding balance or a minimum of RM5 whichever is higher or a maximum of RM50",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "The exchange rate is as determined by Mastercard International or Visa International or any other brand owners of which the Bank is a member, plus a 1.25% conversion fee by the Bank on the converted Ringgit Malaysia amount.",
+    "cash_advance_fee_text": "Bank Islam’s ATM – 2.5% of the cash withdrawn or RM12.00 (whichever is higher). Other than Bank Islam’s ATM – 3% of the cash withdrawn or RM50 (whichever is higher). The fees charged varies from bank to bank.",
+    "best_rate_pct": 13.5,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Bank Islam provides Takaful coverage plan for Bank Islam Credit Card-i cardmember.",
+    "source_pages": [
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "card_name": "Bank Islam Mastercard World Premier Wealth Credit Card-i",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Waived",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 50.0,
+    "late_payment_text": "Late payment charges are 1% of the outstanding balance or a minimum of RM5 whichever is higher or a maximum of RM50",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "The exchange rate is as determined by Mastercard International or Visa International or any other brand owners of which the Bank is a member, plus a 1.25% conversion fee by the Bank on the converted Ringgit Malaysia amount.",
+    "cash_advance_fee_text": "Bank Islam’s ATM – 2.5% of the cash withdrawn or RM12.00 (whichever is higher). Other than Bank Islam’s ATM – 3% of the cash withdrawn or RM50 (whichever is higher). The fees charged varies from bank to bank.",
+    "best_rate_pct": 13.5,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Bank Islam provides Takaful coverage plan for Bank Islam Credit Card-i cardmember.",
+    "source_pages": [
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "card_name": "Bank Islam Mastercard Platinum Credit Card-i",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 388.0,
+    "annual_fee_supplementary_rm": 150.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 50.0,
+    "late_payment_text": "Late payment charges are 1% of the outstanding balance or a minimum of RM5 whichever is higher or a maximum of RM50",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "The exchange rate is as determined by Mastercard International or Visa International or any other brand owners of which the Bank is a member, plus a 1.25% conversion fee by the Bank on the converted Ringgit Malaysia amount.",
+    "cash_advance_fee_text": "Bank Islam’s ATM – 2.5% of the cash withdrawn or RM12.00 (whichever is higher). Other than Bank Islam’s ATM – 3% of the cash withdrawn or RM50 (whichever is higher). The fees charged varies from bank to bank.",
+    "best_rate_pct": 13.5,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Bank Islam provides Takaful coverage plan for Bank Islam Credit Card-i cardmember.",
+    "source_pages": [
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "card_name": "Bank Islam Mastercard Platinum (Inspire) Credit Card-i",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 0.0,
+    "annual_fee_supplementary_rm": 0.0,
+    "annual_fee_note": "Waived",
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 50.0,
+    "late_payment_text": "Late payment charges are 1% of the outstanding balance or a minimum of RM5 whichever is higher or a maximum of RM50",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "The exchange rate is as determined by Mastercard International or Visa International or any other brand owners of which the Bank is a member, plus a 1.25% conversion fee by the Bank on the converted Ringgit Malaysia amount.",
+    "cash_advance_fee_text": "Bank Islam’s ATM – 2.5% of the cash withdrawn or RM12.00 (whichever is higher). Other than Bank Islam’s ATM – 3% of the cash withdrawn or RM50 (whichever is higher). The fees charged varies from bank to bank.",
+    "best_rate_pct": 13.5,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Bank Islam provides Takaful coverage plan for Bank Islam Credit Card-i cardmember.",
+    "source_pages": [
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "card_name": "Bank Islam Mastercard Gold Credit Card-i",
+    "network": "Mastercard",
+    "annual_fee_principal_rm": 130.0,
+    "annual_fee_supplementary_rm": 60.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 50.0,
+    "late_payment_text": "Late payment charges are 1% of the outstanding balance or a minimum of RM5 whichever is higher or a maximum of RM50",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "The exchange rate is as determined by Mastercard International or Visa International or any other brand owners of which the Bank is a member, plus a 1.25% conversion fee by the Bank on the converted Ringgit Malaysia amount.",
+    "cash_advance_fee_text": "Bank Islam’s ATM – 2.5% of the cash withdrawn or RM12.00 (whichever is higher). Other than Bank Islam’s ATM – 3% of the cash withdrawn or RM50 (whichever is higher). The fees charged varies from bank to bank.",
+    "best_rate_pct": 13.5,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Bank Islam provides Takaful coverage plan for Bank Islam Credit Card-i cardmember.",
+    "source_pages": [
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "card_name": "Bank Islam Visa Infinite Credit Card-i",
+    "network": "Visa",
+    "annual_fee_principal_rm": 777.0,
+    "annual_fee_supplementary_rm": 333.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 50.0,
+    "late_payment_text": "Late payment charges are 1% of the outstanding balance or a minimum of RM5 whichever is higher or a maximum of RM50",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "The exchange rate is as determined by Mastercard International or Visa International or any other brand owners of which the Bank is a member, plus a 1.25% conversion fee by the Bank on the converted Ringgit Malaysia amount.",
+    "cash_advance_fee_text": "Bank Islam’s ATM – 2.5% of the cash withdrawn or RM12.00 (whichever is higher). Other than Bank Islam’s ATM – 3% of the cash withdrawn or RM50 (whichever is higher). The fees charged varies from bank to bank.",
+    "best_rate_pct": 13.5,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Bank Islam provides Takaful coverage plan for Bank Islam Credit Card-i cardmember.",
+    "source_pages": [
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "card_name": "Bank Islam Visa Platinum Credit Card-i",
+    "network": "Visa",
+    "annual_fee_principal_rm": 388.0,
+    "annual_fee_supplementary_rm": 150.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 50.0,
+    "late_payment_text": "Late payment charges are 1% of the outstanding balance or a minimum of RM5 whichever is higher or a maximum of RM50",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "The exchange rate is as determined by Mastercard International or Visa International or any other brand owners of which the Bank is a member, plus a 1.25% conversion fee by the Bank on the converted Ringgit Malaysia amount.",
+    "cash_advance_fee_text": "Bank Islam’s ATM – 2.5% of the cash withdrawn or RM12.00 (whichever is higher). Other than Bank Islam’s ATM – 3% of the cash withdrawn or RM50 (whichever is higher). The fees charged varies from bank to bank.",
+    "best_rate_pct": 13.5,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Bank Islam provides Takaful coverage plan for Bank Islam Credit Card-i cardmember.",
+    "source_pages": [
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "card_name": "Bank Islam Visa Gold Credit Card-i",
+    "network": "Visa",
+    "annual_fee_principal_rm": 130.0,
+    "annual_fee_supplementary_rm": 60.0,
+    "annual_fee_note": null,
+    "min_annual_income_rm": null,
+    "late_payment_cap_rm": 50.0,
+    "late_payment_text": "Late payment charges are 1% of the outstanding balance or a minimum of RM5 whichever is higher or a maximum of RM50",
+    "overseas_fee_pct": 1.25,
+    "overseas_fee_text": "The exchange rate is as determined by Mastercard International or Visa International or any other brand owners of which the Bank is a member, plus a 1.25% conversion fee by the Bank on the converted Ringgit Malaysia amount.",
+    "cash_advance_fee_text": "Bank Islam’s ATM – 2.5% of the cash withdrawn or RM12.00 (whichever is higher). Other than Bank Islam’s ATM – 3% of the cash withdrawn or RM50 (whichever is higher). The fees charged varies from bank to bank.",
+    "best_rate_pct": 13.5,
+    "highest_rate_pct": 18.0,
+    "benefits_text": "Bank Islam provides Takaful coverage plan for Bank Islam Credit Card-i cardmember.",
+    "source_pages": [
+      1,
+      2,
+      4,
+      5
+    ]
+  }
+]
