@@ -13,6 +13,7 @@ from google.genai import errors, types
 from config import ROOT, load_config
 from generator import RETRYABLE
 from utils import load_jsonl
+from catalog import CARD_FIELDS
 
 IDK_MARKER = "i don't know"
 
@@ -79,10 +80,27 @@ def call_judge(client, model, prompt):
 
 
 def citation_ok(cited, sources, expected):
-    """True if any cited passage comes from an expected page. None if not applicable."""
+    """True if any cited source comes from an expected page. None if not applicable.
+    RAG sources are 'doc:page' strings; agent sources are lists of them (catalog rows span pages)."""
     if not expected or not cited:
         return None
-    return any(sources[i - 1] in expected for i in cited)
+    as_list = lambda s: s if isinstance(s, list) else [s]
+    return any(page in expected for i in cited for page in as_list(sources[i - 1]))
+
+
+def build_context(a, chunks, catalog_df):
+    """Rebuild what the assistant saw: document chunks for RAG; chunks and catalog rows for the agent."""
+    if "context_refs" not in a:
+        return "\n\n".join(f"[{i}] {chunks[cid]['text']}" for i, cid in enumerate(a["chunk_ids"], start=1))
+    blocks = []
+    for i, ref in enumerate(a["context_refs"], start=1):
+        if ref["kind"] == "document":
+            blocks.append(f"[{i}] {chunks[ref['chunk_id']]['text']}")
+        else:
+            row = catalog_df.loc[ref["catalog_row"]]
+            facts = "; ".join(f"{f}={row[f]}" for f in CARD_FIELDS if pd.notna(row[f]))
+            blocks.append(f"[{i}] Catalog row: {facts}")
+    return "\n\n".join(blocks)
 
 
 def main():
@@ -97,6 +115,7 @@ def main():
     strategy = answers[0]["strategy"]
     chunks = {c["chunk_id"]: c for c in
               load_jsonl(ROOT / cfg["paths"]["index_dir"] / f"{strategy}_chunks.jsonl")}
+    catalog_df = pd.read_csv(ROOT / cfg["catalog"]["path"], encoding="utf-8-sig")
     test = pd.read_csv(ROOT / "eval" / "test_set.csv", keep_default_na=False).set_index("id")
     dupes = test.index[test.index.duplicated()].unique().tolist()
     if dupes:
@@ -121,8 +140,7 @@ def main():
                 verdict = {"correctness": "correct" if q["answerable"] == "no" else "incorrect",
                            "faithful": True, "reason": "refusal (rule-based check)"}
             else:
-                context = "\n\n".join(f"[{i}] {chunks[cid]['text']}"
-                                      for i, cid in enumerate(a["chunk_ids"], start=1))
+                context = build_context(a, chunks, catalog_df)
                 prompt = JUDGE_PROMPT.format(question=a["question"], reference=q["reference_answer"],
                                              answer=a["answer"], context=context)
                 try:

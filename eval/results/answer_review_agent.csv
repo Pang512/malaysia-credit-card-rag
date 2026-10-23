@@ -1,0 +1,339 @@
+﻿id,category,question,reference_answer,answer,correctness,faithful,reason,human_agrees
+q01,fact,What is the minimum monthly payment for the Maybank Cash Back Mastercard Platinum?,"5% of the outstanding balance or RM25, whichever is higher (including instalments, past due amounts and over-limit balances).","The minimum monthly payment for the Maybank Cash Back Mastercard Platinum is 5% of the outstanding balance or RM25, whichever is higher [1]. This amount includes:
+
+* Any instalments, past due amounts, and over-limit balances [1]
+* Monthly instalments or Easy Payment Plans and Balance Transfer Plans, if applicable [1]
+* Term loan monthly instalments for Automatic Balance Conversion, if applicable [1]",correct,True,The assistant accurately identified the minimum payment criteria and correctly attributed the components of the payment as stated in the provided context.,
+q02,fact,What is the annual fee for the Maybank Cash Back Mastercard Platinum?,Free for life.,"The annual fee for the Maybank Cash Back Mastercard Platinum is RM0 (free for life) [1]. 
+
+The documents do not state the supplementary card annual fee [1].",correct,True,The assistant accurately identified the annual fee as free for life and correctly noted the absence of supplementary card information in the provided context.,
+q03,fact,What is the cash advance fee for the Maybank Cash Back Mastercard Platinum?,"A flat rate of 2.52% of the total cash advance amount or a minimum of RM11.65, whichever is higher.","The cash advance fee for the Maybank Cash Back Mastercard Platinum is a flat rate of 2.52% of the total amount of cash advance or a minimum of RM11.65, whichever is higher [2].",correct,True,The assistant accurately provided the cash advance fee as stated in the provided context.,
+q04,fact,What interest rate applies on the Maybank Cash Back Mastercard Platinum if I pay on time 10 out of 12 months?,17% per annum (1.42% per month).,"If you pay on time for 10 out of 12 months on the Maybank Cash Back Mastercard Platinum, the interest rate is **1.42% per month**, which equates to **17% per annum** [1][3].
+
+The documents do not state any other conditions for this rate tier beyond making payments on time for 10 to 11 months.",correct,True,The assistant accurately identified the interest rate and provided the correct supporting documentation.,
+q05,unanswerable,What is the cashback rate on the Maybank Cash Back Mastercard Platinum?,The PDS does not state the cashback rate.,"The Product Disclosure Sheet for the Maybank Cash Back Mastercard Platinum states that it is a cashback-driven product [2], but **the documents do not state** the specific cashback rate.",correct,True,The assistant correctly identifies that the provided documents do not state the cashback rate.,
+q06,table,What is the annual fee for the CIMB Travel World Credit Card?,RM554.72 for the principal card; waived for the supplementary card.,"For the CIMB Travel World Credit Card, the principal annual fee is RM554.72 [2]. The supplementary card fee is waived [2].
+
+The documents do not state any waiver conditions for the principal annual fee, nor do they state the minimum annual income requirement for this card [2].",correct,True,The assistant accurately identified the principal and supplementary fees based on the provided context.,
+q07,table,Is there an annual fee for the CIMB Cash Rebate Platinum Credit Card?,No. The annual fee is waived for both principal and supplementary cards.,"Yes, there is no annual fee for the CIMB Cash Rebate Platinum Credit Card; the principal and supplementary annual fees are RM0, and the fee is waived [1]. 
+
+The documents do not state the minimum annual income requirement or the network for this card [1].",correct,True,The assistant correctly identifies that there is no annual fee and accurately reflects the information provided in the context.,
+q08,fact,What is the cash advance fee for CIMB credit cards?,"5% of the amount advanced or a minimum of RM15.00, whichever is higher, for each cash advance transaction.","For CIMB credit cards, the cash advance fee is **5% of the amount advanced or a minimum of RM15.00, whichever is higher**, imposed for each cash advance transaction [1]. 
+
+Additionally, cash advances are subject to finance charges of **1.5% per month or 18% per annum**, calculated on a daily rest basis from the transaction date until the date it is settled in full [3]. The finance charge-free period does not apply to cash advances [2].
+
+The documents do not state any other conditions for the cash advance fee beyond what is listed above.",correct,True,The assistant accurately provided the cash advance fee and correctly identified the associated finance charges using the provided context.,
+q09,fact,What is the card replacement fee for CIMB credit cards?,RM10 for the first replacement and RM50 for every subsequent replacement.,"The card replacement fee for CIMB credit cards is RM10 for the first replacement and RM50 for every subsequent replacement [1].
+
+The documents do not state any other details regarding card replacement fees.",correct,True,The assistant accurately provided the fee information as stated in the provided context document.,
+q10,eligibility,What is the minimum age to apply for a CIMB credit card?,21 years old.,The documents do not state the minimum age to apply for a CIMB credit card.,correct,True,The provided context passages do not contain information regarding the minimum age requirement for a CIMB credit card.,
+q11,fact,"If I owe RM3,000 on a CIMB credit card and only pay the minimum each month, how long will it take to repay and how much finance charges will I pay?","55 months, with total finance charges of RM1,055 (assuming 18% finance charge and no new transactions).","Based on the CIMB Product Disclosure Sheet, if you have an outstanding balance of RM3,000 and only pay the minimum amount each month (starting with a minimum payment of RM150 in the first month based on 5% or RM50, whichever is higher, at a finance charge of 18% with no new transactions):
+
+* **Repayment Period:** It will take **55 months** to fully repay the debt [1].
+* **Total Finance Charges:** You will incur **RM1,055** in total finance charges [1].
+
+The documents do not state any other repayment scenarios for an initial RM3,000 balance other than paying the minimum or paying RM250 every month [1].",correct,True,The assistant accurately extracted the repayment period and finance charges from the provided context.,
+q12,fact,What is the minimum monthly payment for CIMB credit cards?,"5% of the current balance, plus 100% of service tax and other taxes, plus 100% of monthly instalments, plus any unpaid minimum payments from the previous statement; or RM50, whichever is higher.","For CIMB credit cards, the minimum monthly payment is **5% of the current balance, plus 100% of any service tax and other value-added taxes imposed, plus 100% of all monthly instalments due for programmes/arrangements** (such as CashLite, instalment payment plans, balance transfers, and auto balance conversions), **plus any other unpaid minimum payments specified in the preceding month’s statement, or RM50, whichever is higher** [1][2][4]. 
+
+The ""current balance"" is defined as the retail transactions amount (if any) + cash advance amount (if any) + finance charges and/or late payment charges and any other applicable fees and charges (if any) [2].
+
+The documents do not state any other details regarding minimum monthly payments beyond these specified components and thresholds.",correct,True,The assistant accurately synthesized the components of the minimum payment from the provided context passages.,
+q13,table,What is the annual fee for the OCBC 365 Mastercard?,RM100 for the principal card and RM50 for the supplementary card.,"For the OCBC 365 Mastercard, the principal annual fee is RM100 and the supplementary annual fee is RM50 [1]. 
+
+The documents do not state whether the annual fee is subject to any waiver conditions [1].",correct,True,The assistant accurately reported the annual fees and correctly noted the absence of waiver information in the provided context.,
+q14,table,What is the annual fee for the OCBC Titanium Mastercard?,RM75 for the principal card; no annual fee for the supplementary card.,"The annual fee for the OCBC Titanium Mastercard (Blue/Pink) is RM75 for the principal card, while the supplementary card has no annual fee [1].
+
+The documents do not state any waiver conditions for the principal annual fee [1].",correct,True,The assistant accurately reported the annual fees for both principal and supplementary cards as stated in the provided document.,
+q15,fact,What is the administration cost on overseas transactions for the OCBC 365 Mastercard compared with other OCBC cards?,"1.00% for the OCBC 365 Mastercard and 1.25% for all other OCBC cards, on top of the Visa/Mastercard conversion rate and any network transaction fee.","For overseas transactions, the administration cost is:
+
+* **OCBC 365 Mastercard:** 1.00% [4][7]
+* **All other OCBC cards:** 1.25% [7]
+
+*(Note: Overseas transactions are also subject to the currency conversion rate determined by Visa International or Mastercard Worldwide, plus any transaction fees charged by them [7]. The 1.25% administration cost for other cards is not applicable to the OCBC Premier Voyage Mastercard for OCBC Premier Private Clients [7].)*
+
+| Card Name | Overseas Administration Cost |
+| :--- | :--- |
+| OCBC 365 Mastercard | 1.00% [4][7] |
+| OCBC Premier Voyage | 1.25% [1][7] |
+| OCBC 90°N Visa Card | 1.25% [2][7] |
+| OCBC Cashflo Mastercard | 1.25% [3][7] |
+| OCBC Great Eastern Platinum Mastercard | 1.25% [5][7] |
+| OCBC Titanium Mastercard (Blue/Pink) | 1.25% [6][7] |
+
+The documents do not state any other details regarding overseas transaction fees.",correct,True,The assistant accurately identified the administration costs and provided supporting evidence from the context.,
+q16,fact,What is the contactless payment limit without a PIN for OCBC credit cards?,"RM250 per transaction, and a PIN is required once cumulative contactless transactions without a PIN reach RM3,000.","For OCBC credit cards, contactless transactions without a PIN are capped at RM250 per transaction [2]. If a contactless transaction is above RM250, you are required to enter your PIN [2]. 
+
+Additionally, contactless transactions without a PIN have a cumulative limit [1][2]. By default, once you perform a total of RM3,000 in contactless transactions without a PIN cumulatively, you are required to enter your PIN to complete the transaction, which then resets your cumulative contactless limit to RM0 [1][2]. You also have the option to set your preferred cumulative contactless limit between RM1,000 to RM5,000 (in intervals of RM1,000) by visiting an OCBC branch or calling the OCBC Contact Centre [1].
+
+The documents do not state any other conditions regarding contactless payment limits.",correct,True,"The assistant accurately captured the per-transaction limit, the cumulative limit, and the customization options provided in the context.",
+q17,fact,What is the cash advance fee for OCBC credit cards?,"5% of the amount advanced or a minimum of RM20, whichever is higher, for each cash advance transaction.","The cash advance fee for OCBC credit cards is **5% of the amount advanced or a minimum of RM20, whichever is higher**, and it is imposed for each cash advance transaction [1]. Additionally, cash advances are subject to a cash advance finance charge of 18% p.a. [2].
+
+The documents do not state whether any specific cards are exempt from this fee.",correct,True,The assistant accurately stated the cash advance fee and provided additional relevant context supported by the provided documents.,
+q18,table,What is the annual fee for the PB Quantum credit card?,Free for life without condition.,"The annual fee for the PB Quantum Visa/Mastercard Credit Card is RM0 for both principal and supplementary cards, as it is Free-For-Life without condition [1].",correct,True,The assistant accurately states the annual fee is free for life as supported by the provided context.,
+q19,table,What is the annual fee for the Public Bank Visa Classic credit card?,RM75 for the principal card and RM45 for the supplementary card.,"The annual fee for the Public Bank Visa Classic credit card (listed as the PB Visa Classic/ Standard Mastercard Credit Card) is RM75 for the principal card and RM45 for the supplementary card [1]. 
+
+The conditions attached to the annual fee are:
+* The first-year annual fee is waived [1].
+* Subsequent years' annual fee waiver is based on a minimum of 12 transactions over the preceding 12 months [1].
+
+The documents do not state the minimum annual income for this card [1].",correct,True,The assistant accurately provided the annual fees and conditions as stated in the provided context.,
+q20,fact,What is the late payment charge for Public Bank credit cards?,"A minimum of RM10 or 1% of the total outstanding balance as at statement date, whichever is higher, capped at RM100.","For Public Bank credit cards, if you fail to make the minimum monthly payment by the due date, a late payment charge will apply [1]. The charge is a minimum of RM10 or 1% of the total outstanding balance as at the statement date, whichever is higher, subject to a maximum cap of RM100 [1].",correct,True,The assistant accurately reflects the information provided in the context passage regarding the late payment charge.,
+q21,fact,What is the local cash advance fee for a Public Bank Visa credit card?,RM4.90 plus 0.39% of the total cash advance amount.,"For a Public Bank Visa credit card, the local cash advance fee is RM4.90 plus 0.39% of the total cash advance amount [2].
+
+The documents do not state any other conditions for this fee.",correct,True,The assistant accurately identified the local cash advance fee for the Visa card as stated in the provided context.,
+q22,fact,What foreign exchange spread does Public Bank charge on overseas credit card transactions?,1.25% of the converted Ringgit Malaysia amount.,"Public Bank charges a foreign exchange spread of **1.25%** of the converted Ringgit Malaysia amount on overseas credit card transactions made in foreign currency [11]. 
+
+Additionally, foreign currency transactions are converted to Ringgit Malaysia using US Dollar (USD) as the base currency on the date the transaction is received and/or processed at the conversion rate determined by Visa International or Mastercard Worldwide [11][12].",correct,True,The assistant accurately identified the 1.25% foreign exchange spread and correctly cited the conversion process described in the provided documents.,
+q23,eligibility,What is the maximum card limit for the Maybank Islamic Nadi Mastercard Credit Card-i?,"RM20,000, subject to Bank Negara Malaysia's prescribed limits.","The maximum card limit for the Maybank Islamic Nadi Mastercard Credit Card-i is capped at a maximum of RM20,000, determined on your behalf based on your declared income and subject to Bank Negara Malaysia’s prescribed limits [1].
+
+The documents do not state any other details regarding income requirements or conditions for this limit.",correct,True,The assistant accurately identified the maximum limit and the conditions mentioned in the provided context.,
+q24,islamic,What Shariah concept is the Maybank Islamic Nadi Mastercard Credit Card-i based on?,The Murabahah (cost plus profit) concept via a Tawarruq arrangement (Commodity Murabahah).,"The Maybank Islamic Nadi Mastercard Credit Card-i is based on the **Murabahah** (cost plus profit) concept via a **Tawarruq** arrangement (Commodity Murabahah) [1]. 
+
+This arrangement involves the sale of a Shariah-compliant commodity where the acquisition cost and profit are disclosed, and payment is made over an agreed period [1]. 
+
+The documents do not state any other Shariah concepts or underlying principles for this card.",correct,True,The assistant accurately identified the Shariah concept and provided a faithful explanation based on the provided context.,
+q25,extraction_trap,What is the effective profit rate for the Maybank Islamic Nadi card if I pay on time 10 out of 12 months?,14% per annum (1.17% per month). The PDF shows one merged cell covering all payment tiers.,"For the Maybank Islamic Nadi Mastercard Credit Card-i, if you make payments on time for 10 out of 12 months, the effective profit rate is **1.17% per month**, which equates to **14% per annum** [1].
+
+The documents do not state any additional conditions or differing profit rates for paying on time 10 out of 12 months compared to other payment track records listed in the PDS (12 out of 12 months, or other cardholders) [1].",correct,True,The assistant accurately identified the effective profit rate from the provided document and correctly noted that the rate is consistent across the listed payment categories.,
+q26,table,What is the annual fee for the Maybank Islamic Nadi Mastercard Credit Card-i?,Waived.,"The annual fee for the Maybank Islamic Nadi Mastercard Credit Card-i is RM0, and it is waived [1]. 
+
+The documents do not state the annual fee for the supplementary card [1].",correct,True,The assistant correctly identified the annual fee as waived and accurately noted the absence of supplementary card information in the provided context.,
+q27,islamic,Can I use the Maybank Islamic Nadi card for betting or lottery purchases?,"No. Usage is prohibited at non-Shariah compliant merchant categories, including betting, lottery tickets and casino gaming.","No, you cannot. The Product Disclosure Sheet states that the usage of the Maybank Islamic Nadi Mastercard Credit Card-i is prohibited at non-Shariah-compliant Merchant Category Codes (MCCs), which explicitly include:
+* **MCC 7801:** Government Licensed Online Casinos (Online Gambling) (US Region only) [1]
+* **MCC 7802:** Government Licensed Horse/Dog Racing (US Region only) [1]
+* **MCC 7995:** Betting, including Lottery Tickets, Casino Gaming Chips, Off-Track Betting and Wagers at Race Tracks [1]
+* **MCC 9406:** Government Owned Lotteries (Non-US region) [1]
+* **MCC 9754:** Gambling-Horse and Dog Racing, State Lotteries [1]
+* **MCC 7800:** Government Owned Lotteries (US Region only) [3]
+
+The documents do not state any other conditions regarding betting or lottery purchases.",correct,True,The assistant correctly identifies that the card cannot be used for betting or lottery purchases and provides accurate supporting MCC codes from the provided context.,
+q28,fact,What is the late payment charge for the Bank Islam Credit Card-i?,"1% of the outstanding balance or a minimum of RM5, whichever is higher, up to a maximum of RM50.","The late payment charge for the Bank Islam Credit Card-i is 1% of the outstanding balance, subject to a minimum of RM5 or a maximum of RM50, whichever is higher [1].
+
+The documents do not state any other conditions or tiers for this charge.",partial,False,"The assistant incorrectly states the maximum of RM50 is 'whichever is higher' relative to the minimum, which misrepresents the logic of the fee structure.",
+q29,table,What is the annual fee for the Bank Islam Platinum Mastercard Credit Card-i?,RM388 for the primary card and RM150 for the supplementary card.,"For the Bank Islam Mastercard Platinum Credit Card-i, the annual fee is RM388 for the principal card and RM150 for the supplementary card [4]. 
+
+The documents do not state any annual fee waiver conditions for this card.",correct,True,The assistant accurately retrieved the annual fees from the provided context and correctly noted the absence of waiver information.,
+q30,eligibility,"What financing limit can I get on a Bank Islam Credit Card-i if I earn between RM24,000 and RM36,000 a year?","2 times salary, subject to the Bank's approval.","If you earn between RM24,000 and RM36,000 per year, your Bank Islam Credit Card-i (BIC-i) financing limit is **2 times your salary** [1]. 
+
+The documents do not state any other conditions for this specific income bracket, though the Product Disclosure Sheet notes that the financing limit is subject to the approval and discretion of the bank [4].",correct,True,The assistant accurately identified the financing limit and correctly noted that it is subject to the bank's approval based on the provided documents.,
+q31,fact,What is the Tier 1 profit rate for purchases on the Bank Islam Credit Card-i?,"13.5% per annum, for cardholders with prompt payments for 12 consecutive months.","The Tier 1 profit rate for purchases on the Bank Islam Credit Card-i is **13.5%** per annum [1]. 
+
+This rate applies for purchases with the entitlement of having made prompt payments for 12 consecutive months [1]. To enjoy lower profit/Ujrah rates for retail transactions, you should make at least 10 prompt payments in the last 12 months [1].
+
+The documents do not state any other conditions or details regarding this tier beyond what is provided above.",correct,True,The assistant accurately identified the Tier 1 rate and the associated conditions as stated in the provided context.,
+q32,fact,What is the cash withdrawal fee at a Bank Islam ATM using the Bank Islam Credit Card-i?,"2.5% of the cash withdrawn or RM12.00, whichever is higher.","The cash withdrawal fee at a Bank Islam ATM using the Bank Islam Credit Card-i is **2.5% of the cash withdrawn or RM12.00, whichever is higher** [1]. This fee is subject to an 8% Sales and Services Tax (SST) [4].
+
+The documents do not state any other conditions for this fee.",correct,True,The assistant accurately identified the fee and correctly noted the applicability of the 8% SST based on the provided context.,
+q33,table,What is the annual fee for the Bank Muamalat Visa Platinum Credit Card-i?,"RM138 for the principal card and RM68 for the supplementary card. The first-year fee is waived, and later years are waived with at least 12 retail transactions a year.","For the **Bank Muamalat Visa Platinum Credit Card-i**:
+- **Principal annual fee:** RM138 [1]
+- **Supplementary annual fee:** RM68 [1]
+
+**Conditions and waiver rules:** 
+The first (1st) year annual fee is waived [1]. For subsequent years, the annual fee waiver is subject to a minimum of 12 retail transactions per year [1].",correct,True,The assistant accurately extracted the annual fees and waiver conditions from the provided context.,
+q34,islamic,What is Ta'widh on the Bank Muamalat Credit Card-i and how much is it?,"Ta'widh is the late payment compensation: 1% of the outstanding balance (retail transactions and cash withdrawals only), up to a maximum of RM100, charged when the minimum payment is not met by the due date.","On the Bank Muamalat Credit Card-i, **Ta'widh** (Compensation) is a charge applied in the event that you do not meet the minimum monthly payment payable by the due date [2]. 
+
+**Amount:**
+* You will be charged **1%** of the outstanding balance (comprising retail transactions and cash withdrawals only), subject to a maximum of **RM 100** [2].
+* The Ta'widh charges shall neither be compounded nor added to the outstanding amount in arrears for the computation of profit charges [2].
+
+The documents do not state any additional conditions regarding Ta'widh beyond what is mentioned above.",correct,True,"The assistant accurately identified the Ta'widh definition, rate, and conditions as stated in the provided context.",
+q35,fact,How long is the grace period for retail transactions on the Bank Muamalat Credit Card-i?,"20 + 4 days from statement issuance, provided the previous month's outstanding balance is fully settled. No grace period for cash withdrawals.","For retail transactions on the Bank Muamalat Credit Card-i, a grace period of **20 + 4 days** is granted, commencing from the point of statement issuance [1]. 
+
+The conditions attached to this grace period are:
+- It applies to retail transactions only (no grace period is granted for cash withdrawals) [1].
+- It is provided on the condition that all outstanding balances as per the previous month's statement are fully settled [1].
+- Any amount settled within this grace period is subject to a full rebate (*Ibra'*) by the bank [1].
+
+The documents do not state any other grace period conditions or alternative durations.",correct,True,The assistant accurately identified the grace period duration and conditions as stated in the provided context.,
+q36,fact,How much of my credit limit can I withdraw as cash on the Bank Muamalat Credit Card-i?,Up to 70% of the available limit.,"On the Bank Muamalat Credit Card-i, you can withdraw up to **70% of the available limit** as cash withdrawals [1]. 
+
+Please note the following conditions related to cash withdrawals:
+* There is a service fee or cash withdrawal fee of **2.0% on the withdrawn amount or RM 30, whichever is higher** [2].
+* There is **no grace period** on cash withdrawals, and an actual profit charge of up to 1.8% per month (equivalent to 18% per annum) applies [1][2][3].
+
+The documents do not state any other restrictions or conditions regarding cash withdrawals.",correct,True,The assistant accurately identified the withdrawal limit and provided relevant supporting details found in the provided documents.,
+q37,eligibility,What is the minimum annual income for the BSN Al-Aiman Classic Credit Card-i?,"RM24,000 per annum.","The minimum annual income for the **BSN Al-Aiman Visa/Mastercard Classic Credit Card** is **RM24,000** [1].",correct,True,The assistant correctly identified the minimum annual income for the specified card based on the provided context.,
+q38,eligibility,Can I get a BSN Al-Aiman Credit Card-i without proof of income?,"Yes. You can pledge your Sijil Simpanan Premium (SSP) or BSN Term Deposit-i instead. The minimum pledge amount is RM4,000 and may vary by card type.","Yes, you can get a BSN Al-Aiman Credit Card-i without proof of income by pledging your Sijil Simpanan Premium (SSP) or BSN Term Deposit-i [8]. 
+
+The conditions and terms for this alternative are:
+* **Minimum Pledge Amount:** RM4,000 (may vary depending on the card type) [8].
+* **Facility Limit:** Determined based on a maximum of 95% of the pledged amount [9].
+* **Stamp Duty:** A stamp duty of RM5 for every RM1,000 of the approved facility limit will be charged to your credit card account [8].
+* **Approval:** Applications are subject to bank approval, and the bank will determine the approved facility limit at its discretion [8].
+
+The documents do not state any other alternative methods to apply without proof of income beyond pledging SSP or BSN Term Deposit-i.",correct,True,The assistant accurately provided the alternative application method and key conditions supported by the provided context.,
+q39,comparison,Which has a lower maximum late payment charge: the Bank Islam Credit Card-i or CIMB credit cards?,"Bank Islam: its late payment charge is capped at RM50, while CIMB's is capped at RM100.","Bank Islam credit cards have a lower maximum late payment charge than CIMB credit cards. 
+
+Based on the Product Disclosure Sheets (PDS):
+* **Bank Islam Credit Card-i** (all variants including World, World Premier Wealth, Platinum, Platinum Inspire, Gold, Visa Infinite, Visa Platinum, and Visa Gold): The maximum late payment charge (Ta'widh) is **RM50** [2][3][4][5][6][7][8][9].
+* **CIMB credit cards** (all variants including Visa Infinite, Travel World Elite, World Mastercard, e Credit Card, etc.): The maximum late payment charge is **RM100** [10][11][12][13][14][15][16][17][18][19][20].
+
+The documents do not state any other conditions or exceptions regarding these maximum late payment caps.",correct,True,The assistant correctly identified that Bank Islam has a lower late payment charge and provided the accurate figures supported by the context.,
+q40,comparison,Compare the annual fees of the OCBC 365 Mastercard and the PB Quantum credit card.,OCBC 365 Mastercard: RM100 principal and RM50 supplementary. PB Quantum: free for life without condition.,"Here is a comparison of the annual fees for the two credit cards:
+
+| Card | Principal Annual Fee | Supplementary Annual Fee | Annual Fee Note |
+| :--- | :--- | :--- | :--- |
+| **OCBC 365 Mastercard** | RM100 [1] | RM50 [1] | not stated in PDS [1] |
+| **PB Quantum Visa/Mastercard Credit Card** | RM0 [2] | RM0 [2] | Free-For-Life without condition [2] |
+
+The documents do not state any further conditions or waiver rules regarding the annual fee for the OCBC 365 Mastercard.",correct,True,The assistant accurately extracted the annual fee information for both cards as provided in the reference and context.,
+q41,comparison,Compare the overseas transaction charges of the Maybank Islamic Nadi card and the Bank Islam Credit Card-i.,Maybank Islamic Nadi: a 1% bank charge plus network conversion charges. Bank Islam: the network exchange rate plus a 1.25% conversion fee.,"Here is a comparison of the overseas transaction charges for the Maybank Islamic Nadi Mastercard Credit Card-i and Bank Islam's Credit Card-i products:
+
+* **Maybank Islamic Nadi Mastercard Credit Card-i:** Overseas transaction fee is **1.0%** [1].
+* **Bank Islam Credit Card-i** (all Bank Islam cards, including Mastercard World, World Premier Wealth, Platinum, Platinum (Inspire), Gold, Visa Infinite, Visa Platinum, and Visa Gold): Overseas transaction fee is **1.25%** [3][4][5][6][7][8][9][10].
+
+The documents do not state any additional conditions or tiering attached to these overseas transaction percentages.",partial,True,"The assistant failed to mention the network conversion charges, which are a key component of the total overseas transaction cost mentioned in the reference answer.",
+q42,multi_source,Can I get a credit card without proof of income?,"Yes, with some banks. CIMB may issue a card if you place a fixed deposit equal to the credit limit. Bank Islam requires a Term Deposit-i equal to the financing limit. BSN lets you pledge Sijil Simpanan Premium or a BSN Term Deposit-i (minimum RM4,000).","Yes, you can still get a credit card without proof of income if you meet alternative requirements specified by certain banks in the documents:
+
+* **BSN:** In place of proof of income, you can pledge your Sijil Simpanan Premium (SSP) or BSN Term Deposit-i [1]. The minimum pledge amount is RM4,000 (subject to the card type), and your facility limit will be based on a maximum of 95% of the pledged amount [1][4][5].
+* **Bank Islam:** If you are unable to provide any income evidence, you are required to meet the minimum age requirement and deposit an amount into a Term Deposit-i (Tawarruq) that is equivalent to the financing limit applied [2].
+* **CIMB:** If you cannot provide proof of annual income, the bank may still give you a credit card if you place a fixed deposit [3].
+
+The documents do not state whether other banks on record offer credit cards without proof of income.",correct,True,The assistant accurately summarized the requirements for obtaining a credit card without proof of income based on the provided documents.,
+q43,unanswerable,What is the annual fee for the Hong Leong WISE credit card?,Hong Leong documents are not in the knowledge base.,"I don't know based on the available documents. 
+
+The documents do not state information for Hong Leong Bank or the Hong Leong WISE credit card, as the available documents only cover Maybank, Maybank Islamic, CIMB, OCBC, Public Bank, Bank Islam, Bank Muamalat, and BSN.",correct,True,refusal (rule-based check),
+q44,unanswerable,What is the annual fee for the Maybank Visa Infinite credit card?,Only the Maybank Cash Back Mastercard Platinum PDS is in the knowledge base.,"The documents do not contain information for a Maybank Visa Infinite credit card. The available banks in the database are Maybank, Maybank Islamic, CIMB, OCBC, Public Bank, Bank Islam, Bank Muamalat, and BSN.",correct,False,"The assistant correctly identified that the information was missing, but it incorrectly claimed that Maybank was in the database when it was not present in the provided context.",
+q45,unanswerable,What is the current Overnight Policy Rate set by Bank Negara Malaysia?,Not covered by the credit card PDS documents.,"I don't know based on the available documents.
+
+The documents do not state the current Overnight Policy Rate set by Bank Negara Malaysia.",correct,True,refusal (rule-based check),
+q46,advisory,Which credit card and from which bank is most suitable for someone who has a monthly income of RM5000?,"RUBRIC. Must: convert RM5,000/month to RM60,000/year; say which documents state income rules (BSN Al-Aiman: Classic RM24,000, Gold RM36,000, Platinum RM48,000 per annum, so all three qualify; BSN's group-specific cards also list minimums: Teachers Gold, G-Card and UUM Gold RM24,000, UUM Platinum RM60,000; Bank Islam: financing limit of 2.5 times salary for income of RM36,000 and above); say that the other PDS do not state a minimum income; explain that 'most suitable' depends on spending habits and compare costs such as annual fee waivers and late payment caps. Must not: invent income requirements or name one card as objectively best. Should: note this is not financial advice.","A monthly income of RM5,000 translates to an annual income of RM60,000. Under Bank Simpanan Nasional (BSN), the **BSN-UUM Al-Aiman Mastercard Platinum Credit Card-i** matches an annual income requirement of exactly RM60,000 [7]. 
+
+The documents do not state the eligibility or minimum annual income requirements for the other cards across Maybank, CIMB, OCBC, Public Bank, Bank Islam, and Bank Muamalat (they are listed as ""not stated in PDS"" or have no minimum income specified). Therefore, suitability cannot be determined by income for those cards.
+
+Here are the key details for the BSN-UUM Al-Aiman Mastercard Platinum Credit Card-i:
+
+| Feature | Detail |
+| --- | --- |
+| **Bank & Card Name** | BSN - BSN-UUM Al-Aiman Mastercard Platinum Credit Card-i [7] |
+| **Card Type** | Islamic (Tawarruq concept) [7] |
+| **Min. Annual Income** | RM60,000 [7] |
+| **Annual Fee** | RM0 (Waived for life, no conditions attached) [7] |
+| **Best Profit Rate** | 9.95% p.a. (Retail tiers: 9.95% / 13.5% / 17.5%; Cash advance: 18% or 1.5% per month) [7] |
+| **Late Payment Cap** | RM100 [7] |
+| **Overseas Fee** | 1% [7] |
+| **Benefits** | Automatic Takaful accident coverage up to RM300,000 when you pay the full fare of a plane ticket using the card [7]. |
+
+The documents do not state reward points, cashback rates, air miles earning rates, or lounge access details for any cards. Names suggesting specific groups (such as university alumni or professional affiliations) do not have stated eligibility rules in the PDS, so you should check with the bank to confirm if you qualify. 
+
+*Note: This is general information based strictly on Product Disclosure Sheets and does not constitute financial advice.*",partial,False,The assistant failed to identify that other BSN cards also meet the income requirement and incorrectly claimed that other banks do not state minimum income requirements.,
+q47,advisory,Which are the most important criteria to decide on the best credit card?,"RUBRIC. Must ground the criteria in what the PDS disclose: annual fee and waiver conditions; finance or profit rate tiers that depend on prompt payments (typically 15%/17%/18% p.a.); late payment charge and its cap; cash advance fee; overseas transaction charge; minimum monthly payment. Should mention the cost of paying only the minimum (e.g. CIMB example: RM3,000 takes 55 months and RM1,055 in finance charges) and the Shariah concept for Islamic cards. Should note that rewards, cashback rates and travel perks are usually not in the PDS.","The official Product Disclosure Sheets (PDS) do not state general criteria for deciding on the best credit card. 
+
+However, based on the financial terms, fees, and conditions covered in the PDS documents across our participating banks, the key factors that can be evaluated and compared include:
+
+1. **Annual Fees and Waiver Conditions:** Whether the principal or supplementary card annual fees apply, and any conditions for a fee waiver [query_catalog].
+2. **Income Eligibility:** The minimum annual income requirement needed to apply for a card [query_catalog].
+3. **Finance or Profit Rates:** The tiered interest rates (for conventional cards) or profit rates (for Islamic cards) charged on revolving balances based on prompt payment track records [query_catalog].
+4. **Overseas Charges:** The foreign transaction or overseas conversion fees applied when spending in foreign currencies [query_catalog].
+5. **Late Payment Charges:** The maximum cap and calculation method for late payment penalties or compensation (Ta'widh) [query_catalog].
+
+The documents do not state criteria regarding personal spending habits, reward points, cashback percentages, air miles, or lounge access preferences when choosing a card.",partial,True,The assistant correctly identifies key PDS criteria but misses the required mention of the cost of paying only the minimum and the specific Shariah concept explanation.,
+q48,aggregation,"List down all the credit cards you know here, group by banks. I want to see what I missed out.","Maybank: Cash Back Mastercard Platinum. CIMB: Preferred Visa Infinite, Travel World Elite, Visa Infinite, Travel World, World Mastercard, Visa Signature, Travel Platinum, Petronas Platinum, Cash Rebate Platinum, Visa Platinum, e Credit Card. OCBC: Premier Voyage, 90N Visa, Cashflo Mastercard, 365 Mastercard, Great Eastern Platinum Mastercard, Titanium Mastercard (Blue/Pink). Public Bank: Visa Infinite, World Mastercard, Visa Signature, Visa/Mastercard Platinum, Mutual Gold-PB Visa Platinum, Quantum Visa/Mastercard, Visa/Mastercard Gold, PB-AIA Visa Gold, PB Petron Visa Gold, Visa Classic/Standard Mastercard. Maybank Islamic: Nadi Mastercard Credit Card-i. Bank Islam: Mastercard World, World Premier Wealth, Platinum, Platinum (Inspire), Gold; Visa Infinite, Platinum, Gold. Bank Muamalat: Visa Platinum, Muamalat POS Visa Platinum, Amanah Raya Visa Platinum, EON Visa Platinum, Visa Infinite, Muamalat POS Visa Infinite, EON Visa Infinite. BSN: Al-Aiman Visa/Mastercard Classic, Gold and Platinum; BSN-Teachers Al-Aiman Gold; BSN G-Card Al-Aiman Visa; BSN-UUM Al-Aiman Mastercard Gold and Platinum. Should state that Hong Leong is not included.","Here are all 51 credit cards in the database, grouped by bank:
+
+### Bank Islam (Islamic)
+*   **Bank Islam Mastercard World Credit Card-i** (Principal Annual Fee: RM777, Supplementary: RM333) [30]
+*   **Bank Islam Mastercard World Premier Wealth Credit Card-i** (Principal Annual Fee: Waived, Supplementary: Waived) [31]
+*   **Bank Islam Mastercard Platinum Credit Card-i** (Principal Annual Fee: RM388, Supplementary: RM150) [32]
+*   **Bank Islam Mastercard Platinum (Inspire) Credit Card-i** (Principal Annual Fee: Waived, Supplementary: Waived) [33]
+*   **Bank Islam Mastercard Gold Credit Card-i** (Principal Annual Fee: RM130, Supplementary: RM60) [34]
+*   **Bank Islam Visa Infinite Credit Card-i** (Principal Annual Fee: RM777, Supplementary: RM333) [35]
+*   **Bank Islam Visa Platinum Credit Card-i** (Principal Annual Fee: RM388, Supplementary: RM150) [36]
+*   **Bank Islam Visa Gold Credit Card-i** (Principal Annual Fee: RM130, Supplementary: RM60) [37]
+
+### Bank Muamalat (Islamic)
+*   **Bank Muamalat Visa Platinum Credit Card-i** (Principal Annual Fee: RM138, Supplementary: RM68; 1st year waived, subsequent years require 12 retail transactions) [38]
+*   **Muamalat POS Visa Platinum Credit Card-i** (Principal Annual Fee: RM80, Supplementary: RM68; 1st year waived, subsequent years require 12 retail transactions) [39]
+*   **Bank Muamalat Amanah Raya Visa Platinum Credit Card-i** (Principal Annual Fee: RM80, Supplementary: RM68; 1st year waived, subsequent years require 12 retail transactions) [40]
+*   **Bank Muamalat EON Visa Platinum Credit Card-i** (Principal Annual Fee: RM138, Supplementary: Free; 1st year waived, subsequent years require 12 retail transactions) [41]
+*   **Bank Muamalat Visa Infinite Credit Card-i** (Principal Annual Fee: Free for life, no conditions) [42]
+*   **Muamalat POS Visa Infinite Credit Card-i** (Principal Annual Fee: Free for life, no conditions) [43]
+*   **Bank Muamalat EON Visa Infinite Credit Card-i** (Principal Annual Fee: Free for life, no conditions) [44]
+
+### BSN (Islamic)
+*   **BSN Al-Aiman Visa/Mastercard Classic Credit Card** (Principal Annual Fee: Free for life, Min. Income: RM24,000) [45]
+*   **BSN Al-Aiman Visa/Mastercard Gold Credit Card** (Principal Annual Fee: Free for life, Min. Income: RM36,000) [46]
+*   **BSN Al-Aiman Visa/Mastercard Platinum Credit Card** (Principal Annual Fee: Free for life, Min. Income: RM48,000) [47]
+*   **BSN-Teachers Al-Aiman Gold Credit Card** (Principal Annual Fee: Free for life, Min. Income: RM24,000) [48]
+*   **BSN G-Card Al-Aiman Visa Credit Card** (Principal Annual Fee: Free for life, Min. Income: RM24,000) [49]
+*   **BSN-UUM Al-Aiman Mastercard Gold Credit Card** (Principal Annual Fee: Free for life, Min. Income: RM24,000) [50]
+*   **BSN-UUM Al-Aiman Mastercard Platinum Credit Card** (Principal Annual Fee: Free for life, Min. Income: RM60,000) [51]
+
+### CIMB (Conventional)
+*   **CIMB Preferred Visa Infinite Credit Card** (Principal Annual Fee: Waived, Supplementary: Waived) [2]
+*   **CIMB Travel World Elite Credit Card** (Principal Annual Fee: RM1,215.09, Supplementary: Waived) [3]
+*   **CIMB Visa Infinite Credit Card** (Principal Annual Fee: Waived, Supplementary: Waived) [4]
+*   **CIMB Travel World Credit Card** (Principal Annual Fee: RM554.72, Supplementary: Waived) [5]
+*   **CIMB World Mastercard Credit Card** (Principal Annual Fee: Waived, Supplementary: Waived) [6]
+*   **CIMB Visa Signature Credit Card** (Principal Annual Fee: Waived, Supplementary: Waived) [7]
+*   **CIMB Travel Platinum Credit Card** (Principal Annual Fee: Waived, Supplementary: Waived) [8]
+*   **CIMB Petronas Platinum Credit Card** (Principal Annual Fee: Waived, Supplementary: Waived) [9]
+*   **CIMB Cash Rebate Platinum Credit Card** (Principal Annual Fee: Waived, Supplementary: Waived) [10]
+*   **CIMB Visa Platinum Credit Card** (Principal Annual Fee: Waived, Supplementary: Waived) [11]
+*   **CIMB e Credit Card** (Principal Annual Fee: RM100, Supplementary: Waived) [12]
+
+### Maybank (Conventional)
+*   **Maybank Cash Back Mastercard Platinum** (Principal Annual Fee: Free for life) [1]
+
+### Maybank Islamic (Islamic)
+*   **Maybank Islamic Nadi Mastercard Credit Card-i** (Principal Annual Fee: Waived) [29]
+
+### OCBC (Conventional)
+*   **OCBC Premier Voyage** (Principal Annual Fee: RM750, Supplementary: RM500) [13]
+*   **OCBC 90°N Visa Card** (Principal Annual Fee: RM288, Supplementary: RM88) [14]
+*   **OCBC Cashflo Mastercard** (Principal Annual Fee: RM188, Supplementary: RM68) [15]
+*   **OCBC 365 Mastercard** (Principal Annual Fee: RM100, Supplementary: RM50) [16]
+*   **OCBC Great Eastern Platinum Mastercard** (Principal Annual Fee: No annual fee) [17]
+*   **OCBC Titanium Mastercard (Blue/Pink)** (Principal Annual Fee: RM75, Supplementary: No annual fee) [18]
+
+### Public Bank (Conventional)
+*   **PB Visa Infinite Credit Card** (Principal Annual Fee: Free for life, Supplementary: Free for life for 1st card, RM250 for 2nd onwards) [19]
+*   **PB World Mastercard Credit Card** (Principal Annual Fee: Free for life, Supplementary: Free for life) [20]
+*   **PB Visa Signature Credit Card** (Principal Annual Fee: RM388, Supplementary: RM200; 1st year waived, subsequent years require min. 12 transactions) [21]
+*   **PB Visa/Mastercard Platinum Credit Card** (Principal Annual Fee: RM333, Supplementary: RM150; 1st year waived, subsequent years require min. 12 transactions) [22]
+*   **Mutual Gold-PB Visa Platinum Credit Card** (Principal Annual Fee: Free for life as long as Mutual Gold/Elite/Signature/Platinum/Prestige status is maintained) [23]
+*   **PB Quantum Visa/Mastercard Credit Card** (Principal Annual Fee: Free for life, no conditions) [24]
+*   **PB Visa/Mastercard Gold Credit Card** (Principal Annual Fee: RM150, Supplementary: RM100; 1st year waived, subsequent years require min. 12 transactions) [25]
+*   **PB-AIA Visa Gold Credit Card** (Principal Annual Fee: Free for life, no conditions) [26]
+*   **PB Petron Visa Gold Credit Card** (Principal Annual Fee: Free for life, no conditions) [27]
+*   **PB Visa Classic/ Standard Mastercard Credit Card** (Principal Annual Fee: RM75, Supplementary: RM45; 1st year waived, subsequent years require min. 12 transactions) [28]
+
+---
+
+The documents do not state eligibility requirements or minimum annual income for Maybank, CIMB, OCBC, Public Bank, Maybank Islamic, Bank Islam, and Bank Muamalat cards (except where explicitly noted for BSN).",partial,True,"The assistant failed to mention that Hong Leong is not included, which was a specific requirement in the reference answer.",
+q49,comparison,Which credit card is the best to use if I travel often to different countries?,"RUBRIC. The PDS mainly cover overseas transaction charges, not travel perks. Lowest stated bank charge on overseas transactions is 1%: OCBC 365 Mastercard (1.00%), CIMB cards (1%, not applicable to CIMB Travel World Elite), Maybank Islamic Nadi (1% bank charge), Bank Muamalat (1% service fee) and BSN Al-Aiman (1% administration cost). 1.25%: other OCBC cards, Public Bank (FX spread) and Bank Islam (conversion fee). Maybank Cash Back PDS only states the Mastercard conversion rate. The only travel benefit stated in the PDS is BSN's Takaful travel accident coverage when the full air fare is paid with the card (up to RM100,000 for Gold-tier cards, up to RM300,000 for Platinum cards). Must say that other perks such as lounge access and miles are not covered in the PDS. Must not invent travel benefits.","When traveling frequently to different countries, the key cost factor documented in the Product Disclosure Sheets (PDS) is the **overseas transaction fee percentage**. 
+
+Across the 8 banks covered (Maybank, Maybank Islamic, CIMB, OCBC, Public Bank, Bank Islam, Bank Muamalat, and BSN), cards generally fall into two tiers for overseas transactions:
+
+### Shortlist of Cards by Overseas Fee
+
+| Bank | Card Name | Overseas Fee % | Principal Annual Fee (RM) & Conditions |
+| :--- | :--- | :--- | :--- |
+| **CIMB** | CIMB Travel World Credit Card [3] | 1.00% [3] | RM554.72 (Supplementary card fee is waived) [3] |
+| **CIMB** | CIMB Visa Infinite / World Mastercard / Visa Signature [1][2][4][5] | 1.00% [1][2][4][5] | RM0 (Waived) [1][2][4][5] |
+| **OCBC** | OCBC 365 Mastercard [11] | 1.00% [11] | RM100 (Annual fee note not stated in PDS) [11] |
+| **Maybank Islamic** | Maybank Islamic Nadi Mastercard Credit Card-i [12] | 1.00% [12] | RM0 (Waived) [12] |
+| **Bank Muamalat** | Muamalat / EON / Amanah Raya Visa Platinum & Infinite Credit Cards-i [13][14][15][16][17][18] | 1.00% [13][14][15][16][17][18] | RM0 to RM138 (Various waiver conditions apply) [13][14][15][16][17][18] |
+| **BSN** | BSN Al-Aiman / G-Card / Teachers Credit Cards-i [19][20][21][22][23][24][25] | 1.00% [19][20][21][22][23][24][25] | RM0 (Waived for life, no conditions attached) [19][20][21][22][23][24][25] |
+| **Public Bank** | PB Visa Infinite Credit Card [28] | 1.25% [28] | RM0 (Free-For-Life without condition for Principal and 1st Supplementary Card) [28] |
+| **OCBC** | OCBC Titanium, 90°N, Cashflo, Premier Voyage [27][29][30][32] | 1.25% [27][29][30][32] | RM75 to RM750 (Varies by card) [27][29][30][32] |
+| **Bank Islam** | Bank Islam Mastercard / Visa Credit Cards-i [33][34][35][36][37][47][48][49] | 1.25% [33][34][35][36][37][47][48][49] | RM0 to RM777 (Varies by card tier) [33][34][35][36][37][47][48][49] |
+
+### Trade-offs & Considerations
+* **Lowest Overseas Fee (1.00%):** Selected cards from CIMB, OCBC, Maybank Islamic, Bank Muamalat, and BSN charge 1.00% on foreign currency transactions [1][2][3][4][5][11][12][13][14][15][16][17][18][19][20][21][22][23][24][25].
+* **Travel-Specific Insurance / Takaful Benefits:** Certain cards note built-in coverage. For example, BSN Al-Aiman Credit Cards-i state automatic Takaful accident coverage (up to RM100,000 or RM300,000 depending on the card tier) when you pay the full fare of a plane ticket using the card [19][20][21][22][23][24][25]. Bank Muamalat states that a Credit Card Shield Takaful Plan coverage is fully borne by the bank for all its card types [13][14][15][16][17][18]. 
+
+### What is Not Covered
+* The documents do not state specific rewards points, air miles accumulation rates, or airport lounge access privileges for these cards. 
+* The documents do not state minimum annual income requirements for CIMB, OCBC, Bank Muamalat, Public Bank, and Bank Islam cards listed above.
+
+*Disclaimer: This is general information based strictly on product disclosure sheets and does not constitute financial advice.*",correct,True,"The assistant accurately identified the overseas transaction fees, correctly noted the travel insurance benefits from the PDS, and explicitly stated that other travel perks are not covered.",
+q50,islamic,Can you explain the Islamic concepts?,"Tawarruq: the bank buys a Shariah-compliant commodity, sells it to the customer at cost plus profit on deferred payment, then sells it to a third party for cash on the customer's behalf; the cash becomes the card limit (Maybank Islamic Nadi, Bank Islam, Bank Muamalat, BSN). Murabahah: a cost-plus sale where cost and profit are disclosed. Wakalah: the customer appoints the bank as agent, e.g. a dual-agency arrangement (Bank Muamalat, BSN). Dayn: the facility limit is a debt obligation; Wadi'ah: repayments are held in trust; Muqasah: unused limit is netted off against the sale price (BSN). Wa'd Mulzim: a binding promise (Bank Muamalat). Ibra': a rebate on unearned profit, e.g. for early settlement or paying within the grace period (Maybank Islamic Nadi, Bank Muamalat). Ta'widh: late payment compensation that is not compounded (Bank Muamalat). Qard Balance: approved usage above the financing limit (Bank Islam).","Based on the Product Disclosure Sheets, Islamic credit cards operate on specific Shariah concepts:
+
+* **Tawarruq (Commodity Murabahah):** This is the core concept used for Islamic credit cards (such as Bank Islam Credit Card-i, BSN Al-Aiman Credit Card-i, and Maybank Islamic Nadi Mastercard Credit Card-i) [1][4][5]. It involves buying and selling arrangements where the bank purchases a specific Shariah-compliant commodity from a third-party supplier upon your request (often acting as your purchase agent) on a deferred payment basis, which is then sold for cash [1][5]. Transactions involve disclosed costs and profit rates over an agreed period [1][5].
+* **Bai’ Musawamah / Bai’ Murabahah:** Sale contracts used within the Tawarruq framework (e.g., sale on deferred payment by way of Murabahah, where the acquisition cost and profit are disclosed) [1][5].
+* **Ta’widh:** Compensation fee charged for late payment (e.g., BSN defines Ta'widh as 1% of the total outstanding balance as at the statement date, capped at RM100) [6].
+* **Qard:** An approved transaction resulting from credit card usage exceeding the financing limit at the cardmember's request and bank's discretion, forming part of the Qard Balance [2]. 
+
+The documents do not state definitions for other potential Islamic terms beyond these specific contexts.
+
+*Note: This is general information based on official Product Disclosure Sheets and is not financial advice.*",partial,True,"The assistant correctly identifies the primary concepts but misses several terms mentioned in the reference answer, such as Ibra', Wa'd Mulzim, and Muqasah.",

@@ -31,9 +31,10 @@ Rules:
 2. Cite every fact with the ref number from the tool results, one number per bracket, e.g. [3] or [3][7].
    Never cite a range such as [1-26].
 3. "not stated in PDS" means the document does not give that value. Say so; never guess.
-4. Never filter, sort or count results yourself. Pass every condition in the question (income, annual fee,
-   bank, card type, card name) as tool arguments. If the question has several parts (e.g. "which can I apply
-   for, and which have no annual fee"), call the tool once per part.
+4. Never filter, sort or count results yourself. Pass every condition the user actually states (income,
+   annual fee, bank, card type, a card they name) as tool arguments. If the question has several parts
+   (e.g. "which can I apply for, and which have no annual fee"), call the tool once per part.
+   Never filter by words in card names (e.g. "Travel", "Cash") unless the user names that card.
 5. If the tools return nothing relevant, reply exactly: "I don't know based on the available documents."
 6. Answer what the results support, then state what is not covered, starting with "The documents do not state".
 7. Always include the conditions attached to a figure: waiver rules, payment tiers, employer type, caps.
@@ -41,9 +42,11 @@ Rules:
 8. Never mix figures between banks or cards. Banks other than the 8 above (e.g. Hong Leong) are not covered.
 9. Never infer eligibility from a card's name (e.g. Teachers, G-Card, UUM, Premier, Wealth). If a name suggests
    the card may be for a specific group, say the PDS does not state who is eligible and suggest checking with the bank.
-10. For "which card is best" questions, give a short shortlist with trade-offs, mention that rewards, cashback
-    rates, lounge access and miles are generally not in the PDS, and note this is general information,
-    not financial advice.
+10. For "which card is best for X" questions, compare the relevant facts across ALL cards: sort the catalog by
+    the field that matters (e.g. for someone worried about paying late, sort_by late_payment_cap_rm), and use
+    search_documents to look for any benefits the PDS states that relate to X. Give a short shortlist with
+    trade-offs, mention that rewards, cashback rates, lounge access and miles are generally not in the PDS,
+    and note this is general information, not financial advice.
 11. Be concise. Use a short table when comparing three or more cards. Describe the data exactly
     (e.g. "credit cards", never "charge cards" unless the data says so)."""
 
