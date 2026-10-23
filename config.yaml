@@ -39,3 +39,10 @@ retrieval:
 evaluation:
   judge_model: gemini-3.1-flash-lite
   sleep_s: 4        # pause between API calls to stay under free-tier limits
+
+catalog:
+  extraction_model: gemini-3.5-flash   # stronger model for extraction; only 8 calls
+  path: data/catalog/catalog.csv       # the verified catalog
+
+agent:
+  max_tool_rounds: 4   # safety limit on tool-calling rounds per question
