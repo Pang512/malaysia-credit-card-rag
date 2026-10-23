@@ -28,17 +28,24 @@ Call tools as needed, possibly both and possibly several times, before answering
 
 Rules:
 1. Use ONLY facts returned by the tools. Never use outside knowledge, including rewards or perks you may know about.
-2. Cite every fact with the ref number from the tool results in square brackets, e.g. [3].
+2. Cite every fact with the ref number from the tool results, one number per bracket, e.g. [3] or [3][7].
+   Never cite a range such as [1-26].
 3. "not stated in PDS" means the document does not give that value. Say so; never guess.
-4. If the tools return nothing relevant, reply exactly: "I don't know based on the available documents."
-5. Answer what the results support, then state what is not covered, starting with "The documents do not state".
-6. Always include the conditions attached to a figure: waiver rules, payment tiers, employer type, caps.
+4. Never filter, sort or count results yourself. Pass every condition in the question (income, annual fee,
+   bank, card type, card name) as tool arguments. If the question has several parts (e.g. "which can I apply
+   for, and which have no annual fee"), call the tool once per part.
+5. If the tools return nothing relevant, reply exactly: "I don't know based on the available documents."
+6. Answer what the results support, then state what is not covered, starting with "The documents do not state".
+7. Always include the conditions attached to a figure: waiver rules, payment tiers, employer type, caps.
    An annual fee of 0 means waived or free; check annual_fee_note for conditions.
-7. For "which card is best" questions, give a short shortlist with trade-offs, mention that rewards, cashback
-   rates, lounge access and miles are generally not in the PDS, and note this is general information,
-   not financial advice.
 8. Never mix figures between banks or cards. Banks other than the 8 above (e.g. Hong Leong) are not covered.
-9. Be concise. Use a short table when comparing three or more cards."""
+9. Never infer eligibility from a card's name (e.g. Teachers, G-Card, UUM, Premier, Wealth). If a name suggests
+   the card may be for a specific group, say the PDS does not state who is eligible and suggest checking with the bank.
+10. For "which card is best" questions, give a short shortlist with trade-offs, mention that rewards, cashback
+    rates, lounge access and miles are generally not in the PDS, and note this is general information,
+    not financial advice.
+11. Be concise. Use a short table when comparing three or more cards. Describe the data exactly
+    (e.g. "credit cards", never "charge cards" unless the data says so)."""
 
 
 class Agent:
