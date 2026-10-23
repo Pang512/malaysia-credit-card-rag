@@ -143,9 +143,11 @@ class Agent:
             except errors.APIError as e:
                 if e.code not in RETRYABLE or attempt == llm["max_attempts"] - 1:
                     raise
-                time.sleep(llm["base_wait_s"] * 2 ** attempt)
+                wait = llm["base_wait_s"] * 2 ** attempt
+                print(f"{self.model} returned {e.code}, retrying in {wait}s...")
+                time.sleep(wait)
 
-    def answer(self, question):
+    def answer(self, question, on_step=None):
         self.sources, self.tool_log = [], []
         tools = {"search_documents": self.search_documents, "query_catalog": self.query_catalog}
         config = types.GenerateContentConfig(
@@ -171,6 +173,8 @@ class Agent:
             for call in calls:
                 args = dict(call.args or {})
                 self.tool_log.append({"tool": call.name, "args": args})
+                if on_step:
+                    on_step(call.name, args)  # lets the app show live progress
                 try:
                     result = tools[call.name](**args)
                 except Exception as e:  # a bad argument shouldn't crash the loop; tell the model instead
