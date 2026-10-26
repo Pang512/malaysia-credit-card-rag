@@ -1,0 +1,102 @@
+# Multi-turn user-test set (regression suite).
+# Built from failures found in manual user testing, so it checks that those behaviours stay fixed.
+# It is NOT an unbiased accuracy measure: report it as "N of M scenario checks passed".
+#
+# Per-turn checks (all optional):
+#   expect_clarifying: true          -> the bot asks a question back, with no citations
+#   expect_rewrite: true/false       -> the follow-up was (or was not) rewritten into a standalone question
+#   expect_tool: name                -> this tool was called
+#   expect_args: {arg: value}        -> some call of expect_tool used these arguments
+#   must_include: [text, [alt, alt]] -> every item must appear; a list means any one of its alternatives
+#   must_not_include: [text]         -> none may appear
+# Figures were checked against the PDS documents.
+
+- id: c01_beginner_recommendation
+  profile: {monthly_income_rm: 3200, card_type: conventional}
+  turns:
+    - user: "Which card is the best? Just tell me one."
+      expect_clarifying: true
+      expect_rewrite: false
+    - user: "Lowest cost, please."
+      expect_rewrite: true
+      expect_tool: recommend_cards
+      expect_args: {priority: lowest_cost, card_type: conventional, annual_income_rm: 38400}
+      must_include: ["general information"]
+      must_not_include: ["high-net-worth", "placeholder"]
+    - user: "What's the interest rate if I don't pay in full, and how do I get the lower rate?"
+      expect_rewrite: false
+      must_include: ["15%", "18%"]
+      must_not_include: ["placeholder"]
+    - user: "Is free for life really free forever?"
+      expect_rewrite: false
+      must_include: [["condition", "conditions"]]
+
+- id: c02_comparison_followup
+  profile: {}
+  turns:
+    - user: "Compare the annual fees of the OCBC 365 Mastercard and PB Quantum."
+      must_include: ["RM100", "Quantum", ["free-for-life", "free for life", "no annual fee", "RM0"]]
+    - user: "Which of the two is cheaper overseas?"
+      expect_rewrite: true
+      must_include: [["1%", "1.00%"], "1.25%"]
+    - user: "What about Hong Leong cards?"
+      # No expect_rewrite: the message is self-contained, so leaving it unchanged is correct (check fixed after first run)
+      must_include: [["not covered", "do not cover", "don't cover", "only cover", "don't know"]]
+
+- id: c03_travel_quick_start
+  profile: {monthly_income_rm: 3200, card_type: conventional, priority: travel}
+  turns:
+    - user: "Which card should I get for spending overseas?"
+      expect_tool: recommend_cards
+      expect_args: {priority: travel, card_type: conventional}
+      must_include: [["1%", "1.00%"]]
+    - user: "Do any of them include airport lounge access?"
+      expect_rewrite: true
+      must_include: [["do not state", "does not state", "not stated", "don't know"]]
+
+- id: c04_islamic_clarify
+  profile: {monthly_income_rm: 4000, card_type: islamic}
+  turns:
+    - user: "Which Islamic card should I get?"
+      expect_clarifying: true
+    - user: "Travel."
+      expect_rewrite: true
+      expect_tool: recommend_cards
+      expect_args: {priority: travel, card_type: islamic, annual_income_rm: 48000}
+
+- id: c05_shariah_terms
+  profile: {}
+  turns:
+    - user: "What is Ta'widh?"
+      must_include: ["1%", "RM100"]
+      must_not_include: ["placeholder"]
+    - user: "Is it compounded?"
+      expect_rewrite: true
+      must_include: [["not compounded", "neither compounded", "neither be compounded", "not be compounded", "nor compounded"]]  # "neither be compounded" added after first run: the PDS wording
+
+- id: c06_cashback_feature
+  profile: {card_type: conventional}
+  turns:
+    - user: "Which cards give cashback?"
+      must_include: ["Maybank Cash Back"]
+
+- id: c07_eligibility
+  profile: {}
+  turns:
+    - user: "I earn RM3,200 a month. Which conventional credit cards can I apply for?"
+      expect_tool: query_catalog
+      expect_args: {card_type: conventional, annual_income_rm: 38400}
+      must_include: [["not state", "not stated"]]
+    - user: "Which of those have no annual fee?"
+      expect_rewrite: true
+      expect_tool: query_catalog
+      expect_args: {max_annual_fee_rm: 0}
+
+- id: c08_fee_followup
+  profile: {}
+  turns:
+    - user: "How much is the late payment charge for the OCBC 365 Mastercard?"
+      must_include: ["1%", "RM10", "RM100"]
+    - user: "And the cash advance fee?"
+      expect_rewrite: true
+      must_include: ["5%", "RM20"]

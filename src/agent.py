@@ -16,7 +16,7 @@ from config import load_config
 from generator import RETRYABLE
 from retriever import Retriever
 
-AGENT_VERSION = "agent_v3"
+AGENT_VERSION = "agent_v3_1"
 TEXT_FIELDS = ["overseas_fee_text", "late_payment_text", "cash_advance_fee_text"]
 HISTORY_TURNS = 3  # earlier question-answer pairs passed to the model as conversation context
 
@@ -64,9 +64,15 @@ A. Follow-up messages have already been rewritten into a standalone question. An
    a general question gets a general answer, not one about cards discussed earlier.
 B. Use what the user has told you about themselves (income, conventional or Islamic, priority), e.g. pass
    card_type and annual_income_rm (monthly income x 12) as tool arguments.
-C. For a recommendation, if the user's main priority is unknown, do not call tools. Ask ONE short question
-   offering the options: lowest cost, cashback and everyday spending, travel, or low interest (if they may not
-   always pay in full). Also ask for their monthly income if it is unknown.
+C. For a recommendation ("which card should I get", "which is best for me"):
+   - If the user's main priority is known (in their words or the About me note), recommend straight away with
+     recommend_cards. Never hold back a recommendation to ask for income or card type: rank across all cards
+     and invite them to share these for a tailored list.
+   - If the priority is unknown, first answer what you can from the tools (e.g. which cards their stated income
+     qualifies for), then ask ONE short question offering: lowest cost, cashback and everyday spending, travel,
+     or low interest (if they may not always pay in full).
+D. Questions about how to choose a card, or which criteria matter, are general questions, not recommendations:
+   answer them from what the tools return, without asking for a priority.
 
 Rules:
 1. Use ONLY facts returned by the tools. Never use outside knowledge, including rewards or perks you may know about.
@@ -112,6 +118,8 @@ question that can be understood without the conversation.
 - Replace references ("those two", "the first one", "it") with the card or bank names they refer to.
 - If the message answers a question the assistant asked (e.g. "Lowest cost, please."), combine it with the
   user's earlier request (e.g. "Which card is best for me if my priority is lowest cost? Just tell me one.").
+- If "those" or "them" refers to a filtered list (e.g. cards someone with a given income can apply for), restate
+  the filter (e.g. "conventional cards for an income of RM3,200 a month"), not just the card names shown.
 - If the message is a new, general question, return it unchanged. Do NOT add cards, banks or details from
   earlier answers that the user did not refer to.
 Return only the question."""
@@ -120,13 +128,14 @@ Return only the question."""
 REFERENCE_WORDS = re.compile(
     r"\b(it|its|they|them|those|these|both|either|between|same|above|previous|earlier|that one|this one|"
     r"that card|this card|the card|the cards|the first|the second|the third|the last|first two|first one|"
-    r"second one|which one|the one|what about|how about|instead)\b", re.IGNORECASE)
+    r"second one|which one|the one|the two|the other|what about|how about|instead)\b", re.IGNORECASE)
 
 
 def needs_rewrite(question):
     """Only follow-ups need rewriting: messages that refer back ("the first two") or are very short replies
     ("Lowest cost, please."). Decided in code, so general questions can never pick up earlier cards."""
-    return bool(REFERENCE_WORDS.search(question)) or len(question.split()) <= 3
+    starts_as_follow_up = re.match(r"\s*(and|also|so|then|ok|okay|what if)\b", question, re.IGNORECASE)
+    return bool(REFERENCE_WORDS.search(question) or starts_as_follow_up) or len(question.split()) <= 3
 
 
 def strip_refs(text):
