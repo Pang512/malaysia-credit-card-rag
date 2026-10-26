@@ -46,3 +46,7 @@ catalog:
 
 agent:
   max_tool_rounds: 4   # safety limit on tool-calling rounds per question
+
+app:
+  max_questions_per_session: 15
+  max_questions_per_day: 100
