@@ -35,6 +35,14 @@ PRIORITY_NOTES = {
     "low_interest": "Ranked by the highest finance or profit rate (what you pay with a poor payment record), "
                     "then the best rate. Paying in full every month avoids these charges.",
 }
+# Words that show the USER chose a priority (in the chat or the sidebar). Without one, recommend_cards
+# refuses to rank, so the model can't quietly pick a priority for the user.
+PRIORITY_WORDS = {
+    "lowest_cost": ["cost", "cheap", "fee", "free", "save", "saving", "afford"],
+    "cashback": ["cashback", "cash back", "everyday", "grocer", "food", "shopping", "spend", "rebate"],
+    "travel": ["travel", "overseas", "abroad", "trip", "foreign", "holiday"],
+    "low_interest": ["interest", "pay in full", "minimum payment", "carry a balance", "low rate"],
+}
 LABELS = {"annual_fee_principal_rm": "annual fee (RM)", "highest_rate_pct": "highest rate (% p.a.)",
           "best_rate_pct": "best rate (% p.a.)", "overseas_fee_pct": "overseas fee (%)"}
 
@@ -52,16 +60,17 @@ using official Product Disclosure Sheets (PDS). Your knowledge comes ONLY from t
 Call tools as needed, possibly several, before answering.
 
 Conversation:
-A. Earlier turns are shown only so you understand references like "those two" or "someone like me".
-   Get every figure again from this turn's tool results; never copy figures or citations from earlier answers.
-B. Keep using what the user has told you (income, conventional or Islamic, priority) in later answers,
-   e.g. pass card_type and annual_income_rm (monthly income x 12) as tool arguments.
+A. Follow-up messages have already been rewritten into a standalone question. Answer it exactly as written:
+   a general question gets a general answer, not one about cards discussed earlier.
+B. Use what the user has told you about themselves (income, conventional or Islamic, priority), e.g. pass
+   card_type and annual_income_rm (monthly income x 12) as tool arguments.
 C. For a recommendation, if the user's main priority is unknown, do not call tools. Ask ONE short question
    offering the options: lowest cost, cashback and everyday spending, travel, or low interest (if they may not
    always pay in full). Also ask for their monthly income if it is unknown.
 
 Rules:
 1. Use ONLY facts returned by the tools. Never use outside knowledge, including rewards or perks you may know about.
+   Never add general claims (what banks may do, what is typical, who a card is meant for) that no tool result states.
 2. Cite facts with the ref numbers from the tool results, one number per bracket, e.g. [3] or [3][7]. Never cite
    a range such as [1-26], and never more than 3 refs in one sentence: for a statement about many cards, cite
    up to 3 examples.
@@ -75,6 +84,8 @@ Rules:
 6. If the tools return nothing relevant, reply exactly: "I don't know based on the available documents."
 7. Mention what the documents do not cover only if the user asked about it, in one sentence starting
    "The documents do not state". Before saying so, call search_documents with the user's own wording.
+   For a question about a feature (e.g. cashback, rewards, insurance, lounge access), search the documents for
+   it and name the cards whose documents mention it, with citations, before saying what is not stated.
 8. Copy each figure with its condition exactly as written (waiver rules, payment tiers, employer type, caps).
    Never merge tiers or conditions. An annual fee of 0 means waived or free; check annual_fee_note.
 9. Never mix figures between banks or cards. Banks other than the 8 above (e.g. Hong Leong) are not covered.
@@ -82,18 +93,64 @@ Rules:
     specific group, say the PDS does not state who is eligible. If minimum income is not stated, still list
     the cards and say so once.
 11. Recommendations: present the recommend_cards shortlist in its order. For each card give 2 or 3 reasons tied
-    to the user's priority, with figures and citations, plus one trade-off. Then say in one line why the
-    runner-up ranked lower. Repeat any note the tool returns (e.g. that cashback rates are not in the PDS).
+    to the user's priority, with figures and citations, plus one trade-off. Mention same_figures_as cards in one
+    line. Then give the runner-up and its why_ranked_lower reason exactly as returned; never invent another
+    reason. If it tied, do not call the first card a "top choice". Repeat any tie_note or note the tool returns
+    (e.g. that cashback rates are not in the PDS) in plain words, without a citation.
     End with: "This is general information, not financial advice."
 12. For general questions (how something works, typical charges), give up to 3 examples from different banks,
-    matching the user's card type if known.
+    matching the user's card type if known. For general questions about annual fees or waivers, query the
+    catalog across all cards (limit 60) and give examples of the different conditions in annual_fee_note.
 13. Write for a beginner: plain words, explain jargon briefly, be concise. Use a short table for three or more
     cards. Describe the data exactly (e.g. "credit cards", never "charge cards")."""
+
+
+REWRITE_PROMPT = """You rewrite the user's latest message in a chat about Malaysian credit cards into ONE standalone
+question that can be understood without the conversation.
+- Replace references ("those two", "the first one", "it") with the card or bank names they refer to.
+- If the message answers a question the assistant asked (e.g. "Lowest cost, please."), combine it with the
+  user's earlier request (e.g. "Which card is best for me if my priority is lowest cost? Just tell me one.").
+- If the message is a new, general question, return it unchanged. Do NOT add cards, banks or details from
+  earlier answers that the user did not refer to.
+Return only the question."""
+
+
+REFERENCE_WORDS = re.compile(
+    r"\b(it|its|they|them|those|these|both|either|between|same|above|previous|earlier|that one|this one|"
+    r"that card|this card|the card|the cards|the first|the second|the third|the last|first two|first one|"
+    r"second one|which one|the one|what about|how about|instead)\b", re.IGNORECASE)
+
+
+def needs_rewrite(question):
+    """Only follow-ups need rewriting: messages that refer back ("the first two") or are very short replies
+    ("Lowest cost, please."). Decided in code, so general questions can never pick up earlier cards."""
+    return bool(REFERENCE_WORDS.search(question)) or len(question.split()) <= 3
 
 
 def strip_refs(text):
     """Remove [n] citations from an earlier answer: they point to that turn's sources, not this turn's."""
     return re.sub(r"\[\d+\]", "", text or "")
+
+
+def cap_citation_runs(text, max_refs=3):
+    """Guardrail in code: shorten any run like [1][2]...[28] to its first max_refs citations."""
+    def shorten(match):
+        refs = re.findall(r"\[\d+\]", match.group())
+        return "".join(refs[:max_refs]) + (" " if match.group()[-1].isspace() else "")
+    return re.sub(r"(?:\[\d+\]\s*){%d,}" % (max_refs + 1), shorten, text)
+
+
+def why_lower(better, worse, keys):
+    """Explain in words why `worse` ranked below `better`, using the first ranking figure that differs."""
+    for k in keys:
+        a, b = better[k], worse[k]
+        if pd.isna(a) and pd.isna(b) or (not pd.isna(a) and not pd.isna(b) and a == b):
+            continue
+        if pd.isna(b):
+            return f"its {LABELS[k]} is not stated in the PDS, so it ranks after cards where it is stated"
+        return f"higher {LABELS[k]}: {b:g} vs {a:g}"
+    return ("tied on every ranking figure (" + ", ".join(LABELS[k] for k in keys) + "); "
+            "the order between them is arbitrary")
 
 
 def describe_profile(profile):
@@ -121,6 +178,8 @@ class Agent:
         self.catalog = Catalog(self.cfg)
         self.max_rounds = self.cfg.get("agent", {}).get("max_tool_rounds", 4)
         self.sources, self.tool_log = [], []
+        self.user_text = ""  # everything the user has said this conversation, for the priority check
+        self.call_times = []  # seconds per Gemini call
 
     def _add_source(self, source):
         """Every item a tool returns gets a number, so the answer can cite it as [n]."""
@@ -204,38 +263,54 @@ class Agent:
         """
         if priority not in PRIORITIES:
             return {"error": f"priority must be one of {list(PRIORITIES)}"}
+        if not any(word in self.user_text for word in PRIORITY_WORDS[priority]):
+            return {"needs_priority": True,
+                    "note": "The user has not said what matters most to them. Do not recommend a card. Ask ONE "
+                            "short question: lowest cost, cashback and everyday spending, travel, or low interest "
+                            "(if they may not always pay in full)."}
         keys = PRIORITIES[priority]
         total, eligible = self.catalog.query(card_type=card_type, annual_income_rm=annual_income_rm, limit=60)
         if eligible.empty:
             return {"total_eligible": 0, "shortlist": [], "note": "No cards match these conditions."}
-        ranked = eligible.sort_values(keys, na_position="last")
+        # Tie-break: a lower STATED minimum income first (entry-level cards), unknown minimums last
+        ranked = eligible.sort_values(keys + ["min_annual_income_rm"], na_position="last")
+        figures = ranked[keys].fillna(-1)  # for comparing cards; -1 stands for "not stated"
         top_n = max(1, min(int(top_n or 3), 5))
 
         def ranked_on(row):
             return {LABELS[k]: ("not stated in PDS" if pd.isna(row[k]) else
                                 (row[k].item() if hasattr(row[k], "item") else row[k])) for k in keys}
 
+        # Diversity: the best card from each bank, so the shortlist is a real choice, not 3 near-identical cards
+        per_bank = ranked.drop_duplicates("bank")
         shortlist = []
-        for position, (idx, row) in enumerate(ranked.head(top_n).iterrows(), start=1):
+        for position, (idx, row) in enumerate(per_bank.head(top_n).iterrows(), start=1):
             card = self._card(idx, row, full_text=True)
+            same = ranked[(ranked["bank"] == row["bank"]) & (ranked.index != idx)
+                          & (figures == figures.loc[idx]).all(axis=1)]["card_name"].tolist()
             card.update(position=position, ranked_on=ranked_on(row))
+            if same:
+                card["same_figures_as"] = same[:5] + ([f"and {len(same) - 5} more"] if len(same) > 5 else [])
             shortlist.append(card)
         result = {
             "priority": priority,
             "ranking_rule": "Sorted lowest first by " + ", then ".join(LABELS[k] for k in keys)
-                            + ". Values not stated in the PDS rank last.",
+                            + ". Values not stated in the PDS rank last. One card per bank: other cards from the "
+                              "same bank with identical figures are listed in same_figures_as.",
             "total_eligible": total,
             "eligible_with_no_stated_min_income": int(eligible["min_annual_income_rm"].isna().sum()),
             "shortlist": shortlist,
         }
-        top_values = ranked.iloc[0][keys].fillna(-1)
-        tied = int((ranked[keys].fillna(-1) == top_values).all(axis=1).sum())
-        if tied > 1:
-            result["tied_with_first"] = f"{tied} cards share the first card's ranking values; the order among them is arbitrary."
-        if len(ranked) > top_n:
-            idx, row = next(ranked.iloc[top_n:].iterrows())
+        shortlisted = per_bank.head(top_n).index
+        if len(shortlisted) > 1 and (figures.loc[shortlisted] == figures.loc[shortlisted[0]]).all(axis=1).all():
+            result["tie_note"] = "The shortlisted cards have identical ranking figures, so their order is arbitrary."
+        if len(per_bank) > top_n:
+            idx, row = next(per_bank.iloc[top_n:].iterrows())
             runner_up = self._card(idx, row)
             runner_up["ranked_on"] = ranked_on(row)
+            # The reason is computed here, not by the model: the first ranking figure that differs from the
+            # last shortlisted card, or a plain statement that they tied
+            runner_up["why_ranked_lower"] = why_lower(per_bank.loc[shortlisted[-1]], row, keys)
             result["runner_up"] = runner_up
         if priority in PRIORITY_NOTES:
             result["note"] = PRIORITY_NOTES[priority]
@@ -247,7 +322,10 @@ class Agent:
         llm = self.cfg["llm"]
         for attempt in range(llm["max_attempts"]):
             try:
-                return self.client.models.generate_content(model=self.model, contents=contents, config=config)
+                t0 = time.perf_counter()
+                response = self.client.models.generate_content(model=self.model, contents=contents, config=config)
+                self.call_times.append(round(time.perf_counter() - t0, 1))  # to see where slow answers come from
+                return response
             except errors.APIError as e:
                 if e.code not in RETRYABLE or attempt == llm["max_attempts"] - 1:
                     raise
@@ -255,11 +333,25 @@ class Agent:
                 print(f"{self.model} returned {e.code}, retrying in {wait}s...")
                 time.sleep(wait)
 
+    def _standalone(self, question, history):
+        """Query rewriting: turn a follow-up into a self-contained question, using the recent conversation."""
+        answered_our_question = strip_refs(history[-1]["answer"]).rstrip().endswith("?") if history else False
+        if not history or not (needs_rewrite(question) or answered_our_question):
+            return question  # a self-contained question goes to the agent untouched
+        convo = "\n".join(f"User: {t['question']}\nAssistant: {strip_refs(t['answer'])[:3000]}"
+                          for t in history[-HISTORY_TURNS:])
+        prompt = f"Conversation so far:\n{convo}\n\nLatest user message: {question}\n\nStandalone question:"
+        config = types.GenerateContentConfig(system_instruction=REWRITE_PROMPT, temperature=0)
+        try:
+            return (self._generate(prompt, config).text or "").strip() or question
+        except errors.APIError:
+            return question  # if the rewrite fails, still answer the original message
+
     def answer(self, question, history=None, profile=None, on_step=None):
         """history: earlier turns as [{"question": ..., "answer": ...}]; profile: the app's 'About you' settings."""
         # A per-question copy: shares the loaded models, but has its own sources, so app users never mix
         run = copy.copy(self)
-        run.sources, run.tool_log = [], []
+        run.sources, run.tool_log, run.call_times = [], [], []
         tools = {name: getattr(run, name) for name in ("search_documents", "query_catalog", "recommend_cards")}
         config = types.GenerateContentConfig(
             system_instruction=AGENT_PROMPT,
@@ -267,20 +359,24 @@ class Agent:
             tools=list(tools.values()),
             automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),  # we run the loop
         )
-        contents = []
-        for turn in (history or [])[-HISTORY_TURNS:]:
-            contents.append(types.Content(role="user", parts=[types.Part.from_text(text=turn["question"])]))
-            contents.append(types.Content(role="model", parts=[types.Part.from_text(text=strip_refs(turn["answer"]))]))
+        t0 = time.perf_counter()
+        # The agent sees only the standalone question, so earlier cards can't leak into general answers
+        standalone = run._standalone(question, history)
+        if on_step and standalone != question:
+            on_step("rewrite", standalone)
         about = describe_profile(profile)
-        text = f"{question}\n\n(About me: {about})" if about else question
-        contents.append(types.Content(role="user", parts=[types.Part.from_text(text=text)]))
-        t0, llm_calls = time.perf_counter(), 0
+        text = f"{standalone}\n\n(About me: {about})" if about else standalone
+        # Priority check uses only the user's own words (not the rewrite), so the model can't invent one
+        recent = [turn["question"] for turn in (history or [])[-HISTORY_TURNS:]]
+        run.user_text = " ".join(recent + [question, about]).lower()
+        contents = [types.Content(role="user", parts=[types.Part.from_text(text=text)])]
+        llm_calls = len(run.call_times)  # 1 if a rewrite was made
 
         for round_no in range(self.max_rounds + 1):
             if round_no == self.max_rounds:  # last round: tools switched off, so it must answer now
                 config = config.model_copy(update={"tool_config": types.ToolConfig(
                     function_calling_config=types.FunctionCallingConfig(mode="NONE"))})
-            response = self._generate(contents, config)
+            response = run._generate(contents, config)
             llm_calls += 1
             calls = response.function_calls or []
             if not calls:
@@ -300,10 +396,26 @@ class Agent:
             contents.append(types.Content(role="user", parts=results))  # our tool results
 
         answer = (response.text or "").strip()
+        if not answer:  # Gemini sometimes returns nothing (e.g. a malformed tool call): ask once more, tools off
+            reason = response.candidates[0].finish_reason if response.candidates else None
+            print(f"Empty answer (finish_reason={reason}); asking the model to answer from the tool results")
+            last = response.candidates[0].content if response.candidates else None
+            if last is not None and last.parts:
+                contents.append(last)
+            contents.append(types.Content(role="user", parts=[types.Part.from_text(
+                text="Please answer my question now, using only the tool results above.")]))
+            config = config.model_copy(update={"tool_config": types.ToolConfig(
+                function_calling_config=types.FunctionCallingConfig(mode="NONE"))})
+            response = run._generate(contents, config)
+            llm_calls += 1
+            answer = (response.text or "").strip() or ("Sorry, I couldn't put an answer together this time. "
+                                                       "Please try asking again.")
+        answer = cap_citation_runs(answer)
         cited = sorted({int(n) for n in re.findall(r"\[(\d+)\]", answer) if 1 <= int(n) <= len(run.sources)})
         return {"question": question, "answer": answer, "sources": run.sources, "cited": cited,
                 "tool_calls": run.tool_log, "llm_calls": llm_calls, "model": self.model,
                 "agent_version": AGENT_VERSION, "profile": profile or {}, "history_turns": len(history or []),
+                "standalone_question": standalone, "llm_call_s": run.call_times,
                 "timing": {"total_s": time.perf_counter() - t0}}
 
 
@@ -328,5 +440,5 @@ if __name__ == "__main__":
     for n in result["cited"]:
         s = result["sources"][n - 1]
         print(f"  [{n}] {s['kind']:8} | {s['bank']} | {s['title']} | p{','.join(map(str, s['pages']))}")
-    print(f"\n{result['llm_calls']} LLM calls | {len(result['sources'])} sources returned | "
+    print(f"\n{result['llm_calls']} LLM calls {result['llm_call_s']} | {len(result['sources'])} sources returned | "
           f"{result['timing']['total_s']:.1f}s total")

@@ -26,7 +26,7 @@ EXAMPLES = [
     "Compare the annual fees of the OCBC 365 Mastercard and PB Quantum.",
 ]
 STEP_LABELS = {"query_catalog": "Searching the card catalog", "search_documents": "Reading the PDS documents",
-               "recommend_cards": "Ranking cards for your priority"}
+               "recommend_cards": "Ranking cards for your priority", "rewrite": "Understood your question as"}
 TABLE_COLUMNS = ["bank", "card_name", "card_type", "annual_fee_principal_rm", "annual_fee_supplementary_rm",
                  "annual_fee_note", "min_annual_income_rm", "overseas_fee_pct", "best_rate_pct",
                  "highest_rate_pct", "late_payment_cap_rm", "benefits_text", "valid_as_at"]
@@ -176,8 +176,9 @@ with tab_ask:
                             history = [{"question": t["question"], "answer": t["result"]["answer"]}
                                        for t in st.session_state.history]
                             result = agent.answer(question, history=history, profile=profile, on_step=on_step)
-                            status.update(label=f"Done in {time.perf_counter() - t0:.1f}s", state="complete",
-                                          expanded=False)
+                            calls = " + ".join(f"{s:g}s" for s in result["llm_call_s"])
+                            status.update(label=f"Done in {time.perf_counter() - t0:.1f}s (Gemini calls: {calls})",
+                                          state="complete", expanded=False)
                         except Exception as e:
                             status.update(label="Something went wrong", state="error")
                             st.error(f"The assistant is unavailable right now. Please try again in a minute. ({e})")
