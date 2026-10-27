@@ -98,7 +98,8 @@ def build_context(a, chunks, catalog_df):
             blocks.append(f"[{i}] {chunks[ref['chunk_id']]['text']}")
         else:
             row = catalog_df.loc[ref["catalog_row"]]
-            facts = "; ".join(f"{f}={row[f]}" for f in CARD_FIELDS if pd.notna(row[f]))
+            text_fields = ["overseas_fee_text", "late_payment_text", "cash_advance_fee_text"]
+            facts = "; ".join(f"{f}={row[f]}" for f in CARD_FIELDS + text_fields if f in row and pd.notna(row[f]))
             blocks.append(f"[{i}] Catalog row: {facts}")
     return "\n\n".join(blocks)
 
