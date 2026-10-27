@@ -29,7 +29,7 @@ STEP_LABELS = {"query_catalog": "Searching the card catalog", "search_documents"
                "recommend_cards": "Ranking cards for your priority", "rewrite": "Understood your question as"}
 TABLE_COLUMNS = ["bank", "card_name", "card_type", "annual_fee_principal_rm", "annual_fee_supplementary_rm",
                  "annual_fee_note", "min_annual_income_rm", "overseas_fee_pct", "best_rate_pct",
-                 "highest_rate_pct", "late_payment_cap_rm", "benefits_text", "valid_as_at"]
+                 "highest_rate_pct", "rate_note", "late_payment_cap_rm", "benefits_text", "valid_as_at"]
 
 
 @st.cache_resource(show_spinner="Loading models (first time only)...")
