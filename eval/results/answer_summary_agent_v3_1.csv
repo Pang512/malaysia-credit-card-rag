@@ -1,0 +1,11 @@
+,value
+questions,50.0
+accuracy (correct),0.87
+accuracy (correct or partial),1.0
+faithfulness,0.96
+false refusal rate (answerable),0.0
+unanswerable handled correctly,0.75
+explicit refusal rate (unanswerable),0.25
+citation accuracy,1.0
+median latency (s),38.583
+judge errors,0.0

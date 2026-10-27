@@ -16,7 +16,7 @@ from config import load_config
 from generator import RETRYABLE
 from retriever import Retriever
 
-AGENT_VERSION = "agent_v3_1"
+AGENT_VERSION = "agent_v3_2"
 TEXT_FIELDS = ["overseas_fee_text", "late_payment_text", "cash_advance_fee_text"]
 HISTORY_TURNS = 3  # earlier question-answer pairs passed to the model as conversation context
 
@@ -31,7 +31,7 @@ PRIORITY_NOTES = {
     "cashback": "Cashback rates and categories are not in the PDS, so these cards are ranked by cost only "
                 "(annual fee, then the highest finance or profit rate).",
     "travel": "Lounge access and miles are generally not in the PDS, so these cards are ranked by overseas "
-              "transaction fee, then annual fee. Check benefits_text for any stated travel benefits.",
+              "transaction fee, then annual fee.",
     "low_interest": "Ranked by the highest finance or profit rate (what you pay with a poor payment record), "
                     "then the best rate. Paying in full every month avoids these charges.",
 }
@@ -101,7 +101,8 @@ Rules:
 11. Recommendations: present the recommend_cards shortlist in its order. For each card give 2 or 3 reasons tied
     to the user's priority, with figures and citations, plus one trade-off. Mention same_figures_as cards in one
     line. Then give the runner-up and its why_ranked_lower reason exactly as returned; never invent another
-    reason. If it tied, do not call the first card a "top choice". Repeat any tie_note or note the tool returns
+    reason. If it tied, do not call the first card a "top choice". If a shortlisted card's benefits_text states a
+    benefit related to the user's priority, mention it with its citation. Repeat any tie_note or note the tool returns
     (e.g. that cashback rates are not in the PDS) in plain words, without a citation.
     End with: "This is general information, not financial advice."
 12. For general questions (how something works, typical charges), give up to 3 examples from different banks,

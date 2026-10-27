@@ -37,9 +37,12 @@ def check_turn(turn, r):
     answer = normalise(r["answer"])
     calls = [c for c in r["tool_calls"] if c["tool"] == turn.get("expect_tool")]
     checks = {}
-    if turn.get("expect_clarifying"):  # the answer ends by asking the user something
-        lines = [line for line in (r["answer"] or "").strip().splitlines() if line.strip()]
-        checks["clarifying"] = bool(lines) and "?" in lines[-1]
+    if turn.get("expect_clarifying"):
+        # Asks the user to choose ("?" or "let me know") AND offers at least 3 of the 4 priorities.
+        # (Checking only the last line was too strict: v3.1 asks first, then lists the options.)
+        asks = "?" in answer or "let me know" in answer
+        offers = sum(w in answer for w in ["lowest cost", "cashback", "travel", "interest"]) >= 3
+        checks["clarifying"] = asks and offers
     if "expect_rewrite" in turn:
         checks["rewrite"] = (r["standalone_question"] != r["question"]) == turn["expect_rewrite"]
     if "expect_tool" in turn:
