@@ -9,6 +9,7 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from agent import Agent  # noqa: E402
+from fetch_data import ensure_data  # noqa: E402
 
 st.set_page_config(page_title="Malaysian Credit Card Assistant", page_icon="💳", layout="wide")
 
@@ -34,7 +35,10 @@ TABLE_COLUMNS = ["bank", "card_name", "card_type", "annual_fee_principal_rm", "a
 
 @st.cache_resource(show_spinner="Loading models (first time only)...")
 def load_agent():
-    return Agent()  # embedding model, FAISS index, BM25 and catalog: loaded once, shared by every visitor
+    ensure_data()  # online: download the private index files on first start
+    # Embedding model, FAISS index, BM25 and catalog: loaded once, shared by every visitor.
+    # use_fallback: if the main Gemini model fails or times out, answer with the backup model
+    return Agent(use_fallback=True)
 
 
 @st.cache_resource
@@ -177,7 +181,8 @@ with tab_ask:
                                        for t in st.session_state.history]
                             result = agent.answer(question, history=history, profile=profile, on_step=on_step)
                             calls = " + ".join(f"{s:g}s" for s in result["llm_call_s"])
-                            status.update(label=f"Done in {time.perf_counter() - t0:.1f}s (Gemini calls: {calls})",
+                            backup = " · backup model used" if agent.fallback_model in result["models_used"] else ""
+                            status.update(label=f"Done in {time.perf_counter() - t0:.1f}s (Gemini calls: {calls}){backup}",
                                           state="complete", expanded=False)
                         except Exception as e:
                             status.update(label="Something went wrong", state="error")

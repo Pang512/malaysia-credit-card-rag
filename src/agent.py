@@ -16,7 +16,7 @@ from config import load_config
 from generator import RETRYABLE
 from retriever import Retriever
 
-AGENT_VERSION = "agent_v3_2"
+AGENT_VERSION = "agent_v3_2"  # + citation-range guardrail (formatting only, after evaluation)
 TEXT_FIELDS = ["overseas_fee_text", "late_payment_text", "cash_advance_fee_text"]
 HISTORY_TURNS = 3  # earlier question-answer pairs passed to the model as conversation context
 
@@ -145,7 +145,13 @@ def strip_refs(text):
 
 
 def cap_citation_runs(text, max_refs=3):
-    """Guardrail in code: shorten any run like [1][2]...[28] to its first max_refs citations."""
+    """Guardrail in code: turn ranges like [1-51] into [1][2][3], and shorten any run like [1][2]...[28]
+    to its first max_refs citations."""
+    text = re.sub(r"\[(\d+)\s*[-\u2013]\s*(\d+)\]",
+                  lambda m: "".join(f"[{i}]" for i in range(int(m.group(1)),
+                                                            min(int(m.group(2)), int(m.group(1)) + max_refs - 1) + 1)),
+                  text)
+
     def shorten(match):
         refs = re.findall(r"\[\d+\]", match.group())
         return "".join(refs[:max_refs]) + (" " if match.group()[-1].isspace() else "")
@@ -181,17 +187,22 @@ def describe_profile(profile):
 
 
 class Agent:
-    def __init__(self, cfg=None, model=None):
+    def __init__(self, cfg=None, model=None, use_fallback=False):
         load_dotenv()
         self.cfg = cfg or load_config()
         self.model = model or self.cfg["llm"]["model"]
-        self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+        # The public app uses a backup model when the main one fails; evaluation runs keep one model only
+        self.fallback_model = self.cfg["llm"].get("fallback_model") if use_fallback else None
+        timeout_s = self.cfg["llm"].get("timeout_s")  # give up on a stuck call instead of waiting minutes
+        http_options = types.HttpOptions(timeout=int(timeout_s * 1000)) if timeout_s else None
+        self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"), http_options=http_options)
         self.retriever = Retriever(self.cfg["retrieval"]["strategy"], self.cfg)
         self.catalog = Catalog(self.cfg)
         self.max_rounds = self.cfg.get("agent", {}).get("max_tool_rounds", 4)
         self.sources, self.tool_log = [], []
         self.user_text = ""  # everything the user has said this conversation, for the priority check
         self.call_times = []  # seconds per Gemini call
+        self.models_used = []  # which model answered each call (shows when the backup model was needed)
 
     def _add_source(self, source):
         """Every item a tool returns gets a number, so the answer can cite it as [n]."""
@@ -330,20 +341,29 @@ class Agent:
 
     # ----- The agent loop -----
 
-    def _generate(self, contents, config):
-        llm = self.cfg["llm"]
+    def _generate(self, contents, config, model=None):
+        llm, model = self.cfg["llm"], model or self.model
         for attempt in range(llm["max_attempts"]):
             try:
                 t0 = time.perf_counter()
-                response = self.client.models.generate_content(model=self.model, contents=contents, config=config)
+                response = self.client.models.generate_content(model=model, contents=contents, config=config)
                 self.call_times.append(round(time.perf_counter() - t0, 1))  # to see where slow answers come from
+                self.models_used.append(model)
                 return response
             except errors.APIError as e:
-                if e.code not in RETRYABLE or attempt == llm["max_attempts"] - 1:
-                    raise
-                wait = llm["base_wait_s"] * 2 ** attempt
-                print(f"{self.model} returned {e.code}, retrying in {wait}s...")
-                time.sleep(wait)
+                error, retryable = e, e.code in RETRYABLE
+                label = e.code
+            except Exception as e:  # e.g. the HTTP client timing out
+                error, retryable, label = e, True, type(e).__name__
+            if not retryable or attempt == llm["max_attempts"] - 1:
+                break
+            wait = llm["base_wait_s"] * 2 ** attempt
+            print(f"{model} returned {label}, retrying in {wait}s...")
+            time.sleep(wait)
+        if self.fallback_model and model != self.fallback_model:
+            print(f"{model} failed ({label}); switching to backup model {self.fallback_model}")
+            return self._generate(contents, config, model=self.fallback_model)
+        raise error
 
     def _standalone(self, question, history):
         """Query rewriting: turn a follow-up into a self-contained question, using the recent conversation."""
@@ -363,7 +383,7 @@ class Agent:
         """history: earlier turns as [{"question": ..., "answer": ...}]; profile: the app's 'About you' settings."""
         # A per-question copy: shares the loaded models, but has its own sources, so app users never mix
         run = copy.copy(self)
-        run.sources, run.tool_log, run.call_times = [], [], []
+        run.sources, run.tool_log, run.call_times, run.models_used = [], [], [], []
         tools = {name: getattr(run, name) for name in ("search_documents", "query_catalog", "recommend_cards")}
         config = types.GenerateContentConfig(
             system_instruction=AGENT_PROMPT,
@@ -427,7 +447,7 @@ class Agent:
         return {"question": question, "answer": answer, "sources": run.sources, "cited": cited,
                 "tool_calls": run.tool_log, "llm_calls": llm_calls, "model": self.model,
                 "agent_version": AGENT_VERSION, "profile": profile or {}, "history_turns": len(history or []),
-                "standalone_question": standalone, "llm_call_s": run.call_times,
+                "standalone_question": standalone, "llm_call_s": run.call_times, "models_used": run.models_used,
                 "timing": {"total_s": time.perf_counter() - t0}}
 
 

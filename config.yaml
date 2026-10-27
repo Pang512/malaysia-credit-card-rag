@@ -21,6 +21,7 @@ llm:
   max_attempts: 2      # tries per model before switching to the fallback
   base_wait_s: 5       # wait before a retry (doubles each time); evaluation will use a longer wait
   prompt_version: v2
+  timeout_s: 30   # give up on a stuck Gemini call after 30 seconds
 
 embedding:
   model: BAAI/bge-small-en-v1.5
