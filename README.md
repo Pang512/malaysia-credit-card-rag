@@ -1,3 +1,4 @@
+   > **Status:** frozen at v3.2 (portfolio release). Active development continues in [KadKaki](https://github.com/Pang512/kadkaki).
 # 💳 Malaysian Credit Card Assistant
 
 An AI chatbot that helps first-time cardholders in Malaysia understand and compare credit cards, including **Islamic credit cards (Credit Card-i)**. It answers only from the banks' official **Product Disclosure Sheets (PDS)**, cites the document and page for every fact, and says so when the documents don't cover something.
